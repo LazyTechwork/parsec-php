@@ -1,0 +1,27 @@
+{
+    "name": "lazytechwork/parsec-php",
+    "description": "Client for integration with ParsecNET 3",
+    "type": "library",
+    "require": {
+        "php": ">=8.3",
+        "ext-xml": "*",
+        "ext-soap": "*",
+        "ramsey/uuid": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "LazyTechwork\\Parsec\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ivan Petrov",
+            "email": "lazytechwork@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpstan/phpstan": "^1.11",
+        "friendsofphp/php-cs-fixer": "^3.59"
+    }
+}
