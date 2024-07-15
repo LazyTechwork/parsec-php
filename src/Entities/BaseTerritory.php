@@ -8,7 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * Базовый класс, используемый для описания территории.
  */
-class BaseTerritory
+class BaseTerritory extends BaseObject
 {
     /**
      * @var UuidInterface Уникальный ключ территории

@@ -4,7 +4,7 @@ namespace LazyTechwork\Parsec\Entities;
 
 use Ramsey\Uuid\UuidInterface;
 
-class BasePerson
+class BasePerson extends BaseObject
 {
     /**
      * @var UuidInterface Уникальный ключ сотрудника

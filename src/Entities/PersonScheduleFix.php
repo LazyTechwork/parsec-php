@@ -8,7 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * Класс, используемый для определения поправки к рабочему времени сотрудника.
  */
-final class PersonScheduleFix
+final class PersonScheduleFix extends BaseObject
 {
     /**
      * @var UuidInterface Уникальный ключ поправки

@@ -7,7 +7,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * Класс, используемый для описания событий системы.
  */
-final class EventsHistory
+final class EventsHistory extends BaseObject
 {
     /**
      * @var Event[]

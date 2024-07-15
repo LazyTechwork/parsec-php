@@ -4,7 +4,7 @@ namespace LazyTechwork\Parsec\Entities;
 
 use Ramsey\Uuid\UuidInterface;
 
-final class Session
+final class Session extends BaseObject
 {
     private UuidInterface $sessionId;
     private UuidInterface $rootOrgUnitId;

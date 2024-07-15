@@ -8,7 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * Класс, используемый для определения дополнительного поля данных персонала.
  */
-final class PersonExtraFieldTemplate
+final class PersonExtraFieldTemplate extends BaseObject
 {
     /**
      * @var UuidInterface Уникальный ключ шаблона

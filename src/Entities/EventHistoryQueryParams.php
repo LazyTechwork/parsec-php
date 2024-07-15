@@ -9,7 +9,7 @@ use Ramsey\Uuid\UuidInterface;
  * Параметры даты и времени передаются в UTC при значении параметра UseLocalTime == false (по умолчанию).
  * Если в часовой диапазон попадает момент окончания суток (24.00), то такой диапазон нужно разбить на два: с ХХ часов по 24.00 и с 00.00 часов до YY. При этом для первой части диапазона используются параметры StartTime0 и EndTime0, а для второй части - StartTime1 и EndTime1.
  */
-final class EventHistoryQueryParams
+final class EventHistoryQueryParams extends BaseObject
 {
     /**
      * @var UuidInterface[] Массив ключей событий, которые будут отобраны в отчет. Если задан, все остальные параметры игнорируются
