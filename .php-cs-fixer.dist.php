@@ -8,6 +8,7 @@ return (new Config())
     ->setRules([
         '@PSR12' => true,
         '@Symfony' => true,
+        'yoda_style' => false,
     ])
     ->setParallelConfig(ParallelConfigFactory::detect())
     ->setFinder((new Finder())->in(__DIR__));
