@@ -2,6 +2,8 @@
 
 namespace LazyTechwork\Parsec;
 
+use LazyTechwork\Parsec\Enums\ParsecMethod;
+
 class ParsecClient
 {
     private \SoapClient $client;

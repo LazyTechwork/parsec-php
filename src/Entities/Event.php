@@ -2,7 +2,7 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\EventType;
+use LazyTechwork\Parsec\Enums\EventType;
 
 /**
  * Класс, используемый для описания события системы.

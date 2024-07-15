@@ -2,7 +2,7 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\PersonScheduleFixType;
+use LazyTechwork\Parsec\Enums\PersonScheduleFixType;
 use Ramsey\Uuid\UuidInterface;
 
 /**

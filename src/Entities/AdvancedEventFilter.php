@@ -2,7 +2,7 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\TransactionKey;
+use LazyTechwork\Parsec\Enums\TransactionKey;
 use Ramsey\Uuid\UuidInterface;
 
 /**

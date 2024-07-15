@@ -2,7 +2,7 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\TerritoryType;
+use LazyTechwork\Parsec\Enums\TerritoryType;
 use Ramsey\Uuid\UuidInterface;
 
 /**

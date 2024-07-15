@@ -1,6 +1,6 @@
 <?php
 
-namespace LazyTechwork\Parsec;
+namespace LazyTechwork\Parsec\Enums;
 
 enum ParsecMethod: string
 {

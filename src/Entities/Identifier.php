@@ -2,7 +2,7 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\IdentifierType;
+use LazyTechwork\Parsec\Enums\IdentifierType;
 use Ramsey\Uuid\UuidInterface;
 
 /**

@@ -2,19 +2,17 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\TransactionKey;
-
 class EventFilter extends BaseObject
 {
     /**
-     * @var array<int|TransactionKey> Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций
+     * @var array<int|\LazyTechwork\Parsec\Enums\TransactionKey> Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций
      */
     protected array $transactionTypes;
 
     /**
      * Класс, используемый для отбора событий по подписке по типу транзакций.
      *
-     * @param array<int|TransactionKey> $TransactionTypes Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций
+     * @param array<int|\LazyTechwork\Parsec\Enums\TransactionKey> $TransactionTypes Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций
      */
     public function __construct(
         array $TransactionTypes

@@ -1,6 +1,6 @@
 <?php
 
-namespace LazyTechwork\Parsec;
+namespace LazyTechwork\Parsec\Enums;
 
 /**
  * Представляет типы схем языка определения схемы XML (XSD) W3C.
