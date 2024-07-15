@@ -118,5 +118,4 @@ enum XmlTypeCode: int
     case UntypedAtomic = 11; // An untyped atomic value.
 
     case YearMonthDuration = 53; // This value supports the .NET Framework infrastructure and is not intended to be used directly from your code.
-
 }

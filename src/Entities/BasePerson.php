@@ -30,11 +30,11 @@ class BasePerson
     /**
      * Класс, используемый для описания сотрудника.
      *
-     * @param UuidInterface $ID Уникальный ключ сотрудника
-     * @param string $LAST_NAME Фамилия
-     * @param string $FIRST_NAME Имя
-     * @param string $MIDDLE_NAME Отчество
-     * @param string $TAB_NUM Табельный номер
+     * @param UuidInterface $ID          Уникальный ключ сотрудника
+     * @param string        $LAST_NAME   Фамилия
+     * @param string        $FIRST_NAME  Имя
+     * @param string        $MIDDLE_NAME Отчество
+     * @param string        $TAB_NUM     Табельный номер
      */
     public function __construct(UuidInterface $ID, #[\SensitiveParameter] string $LAST_NAME, #[\SensitiveParameter] string $FIRST_NAME, #[\SensitiveParameter] string $MIDDLE_NAME, #[\SensitiveParameter] string $TAB_NUM)
     {

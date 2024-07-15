@@ -12,11 +12,11 @@ final class OrgUnit extends BaseOrgUnit
     private UuidInterface $parentId;
 
     /**
-     * Класс, используемый для описания подразделения
+     * Класс, используемый для описания подразделения.
      *
-     * @param UuidInterface $ID Уникальный ключ подразделения
-     * @param string $NAME Название подразделения
-     * @param string $DESC Описание подразделения
+     * @param UuidInterface $ID        Уникальный ключ подразделения
+     * @param string        $NAME      Название подразделения
+     * @param string        $DESC      Описание подразделения
      * @param UuidInterface $PARENT_ID Уникальный ключ родительского подразделения
      */
     public function __construct(UuidInterface $ID, string $NAME, string $DESC, UuidInterface $PARENT_ID)
@@ -33,7 +33,7 @@ final class OrgUnit extends BaseOrgUnit
     public function setParentId(UuidInterface $parentId): self
     {
         $this->parentId = $parentId;
+
         return $this;
     }
-
 }

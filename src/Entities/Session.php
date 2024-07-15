@@ -9,6 +9,7 @@ final class Session
     private UuidInterface $sessionId;
     private UuidInterface $rootOrgUnitId;
     private UuidInterface $rootTerritoryId;
+
     public function __construct(
         #[\SensitiveParameter] UuidInterface $SessionID,
         UuidInterface $RootOrgUnitID,

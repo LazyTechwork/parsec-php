@@ -3,10 +3,9 @@
 namespace LazyTechwork\Parsec\Entities;
 
 use Ramsey\Uuid\UuidInterface;
-use SensitiveParameter;
 
 /**
- * Класс, используемый для описания идентификатора
+ * Класс, используемый для описания идентификатора.
  */
 class BaseIdentifier extends BaseObject
 {
@@ -22,14 +21,15 @@ class BaseIdentifier extends BaseObject
      * @var bool Признак, является ли идентификатор первичным
      */
     protected bool $isPrimary;
+
     /**
-     * Класс, используемый для описания идентификатора
+     * Класс, используемый для описания идентификатора.
      *
-     * @param string $CODE Код идентификатора (строка, содержащая число в шестнадцатеричном формате, длинной ровно 8 символов)
-     * @param UuidInterface $PERSON_ID Уникальный ключ сотрудника
-     * @param bool $IS_PRIMARY Признак, является ли идентификатор первичным
+     * @param string        $CODE       Код идентификатора (строка, содержащая число в шестнадцатеричном формате, длинной ровно 8 символов)
+     * @param UuidInterface $PERSON_ID  Уникальный ключ сотрудника
+     * @param bool          $IS_PRIMARY Признак, является ли идентификатор первичным
      */
-    public function __construct(#[SensitiveParameter] string $CODE, UuidInterface $PERSON_ID, bool $IS_PRIMARY)
+    public function __construct(#[\SensitiveParameter] string $CODE, UuidInterface $PERSON_ID, bool $IS_PRIMARY)
     {
         $this->code = $CODE;
         $this->personId = $PERSON_ID;
@@ -44,6 +44,7 @@ class BaseIdentifier extends BaseObject
     public function setCode(#[\SensitiveParameter] string $code): static
     {
         $this->code = $code;
+
         return $this;
     }
 
@@ -55,6 +56,7 @@ class BaseIdentifier extends BaseObject
     public function setPersonId(UuidInterface $personId): static
     {
         $this->personId = $personId;
+
         return $this;
     }
 
@@ -66,6 +68,7 @@ class BaseIdentifier extends BaseObject
     public function setIsPrimary(bool $isPrimary): static
     {
         $this->isPrimary = $isPrimary;
+
         return $this;
     }
 }

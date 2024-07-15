@@ -22,9 +22,9 @@ class BaseOrgUnit extends BaseObject
     /**
      * Класс, используемый для описания подразделения.
      *
-     * @param UuidInterface $ID Уникальный ключ подразделения
-     * @param string $NAME Название подразделения
-     * @param string $DESC Описание подразделения
+     * @param UuidInterface $ID   Уникальный ключ подразделения
+     * @param string        $NAME Название подразделения
+     * @param string        $DESC Описание подразделения
      */
     public function __construct(UuidInterface $ID, string $NAME, string $DESC)
     {
@@ -41,6 +41,7 @@ class BaseOrgUnit extends BaseObject
     public function setId(UuidInterface $id): static
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -52,6 +53,7 @@ class BaseOrgUnit extends BaseObject
     public function setName(string $name): static
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -63,7 +65,7 @@ class BaseOrgUnit extends BaseObject
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
         return $this;
     }
-
 }

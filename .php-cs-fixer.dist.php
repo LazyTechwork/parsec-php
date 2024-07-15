@@ -7,7 +7,7 @@ use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 return (new Config())
     ->setRules([
         '@PSR12' => true,
-        'no_extra_blank_lines' => true,
+        '@Symfony' => true,
     ])
     ->setParallelConfig(ParallelConfigFactory::detect())
     ->setFinder((new Finder())->in(__DIR__));

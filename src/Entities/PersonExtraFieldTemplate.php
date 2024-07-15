@@ -24,9 +24,9 @@ final class PersonExtraFieldTemplate
     private string $name;
 
     /**
-     * @param UuidInterface $ID Уникальный ключ шаблона
-     * @param XmlTypeCode $TYPE Тип представленных данных
-     * @param string $NAME Наименование шаблона
+     * @param UuidInterface $ID   Уникальный ключ шаблона
+     * @param XmlTypeCode   $TYPE Тип представленных данных
+     * @param string        $NAME Наименование шаблона
      */
     public function __construct(UuidInterface $ID, XmlTypeCode $TYPE, string $NAME)
     {
@@ -43,6 +43,7 @@ final class PersonExtraFieldTemplate
     public function setId(UuidInterface $id): PersonExtraFieldTemplate
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -54,6 +55,7 @@ final class PersonExtraFieldTemplate
     public function setType(XmlTypeCode $type): PersonExtraFieldTemplate
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -65,7 +67,7 @@ final class PersonExtraFieldTemplate
     public function setName(string $name): PersonExtraFieldTemplate
     {
         $this->name = $name;
+
         return $this;
     }
-
 }

@@ -11,9 +11,9 @@ final class EventsHistoryResult extends BaseResult
     /**
      * Класс используется в качестве результата функции GetEvents.
      *
-     * @param int $Result Результат выполнения операции. 0 – операция выполнена успешно, -1 – операция выполнена с ошибкой. Значения >0 планируется использовать для кодов специфических ошибок.
-     * @param string $ErrorMessage Описание ошибки, произошедшей при выполнении операции.
-     * @param EventsHistory $Value Результат выполнения операции.
+     * @param int           $Result       Результат выполнения операции. 0 – операция выполнена успешно, -1 – операция выполнена с ошибкой. Значения >0 планируется использовать для кодов специфических ошибок.
+     * @param string        $ErrorMessage описание ошибки, произошедшей при выполнении операции
+     * @param EventsHistory $Value        результат выполнения операции
      */
     public function __construct(int $Result, string $ErrorMessage, EventsHistory $Value)
     {
