@@ -59,6 +59,10 @@ abstract class BaseObject
 
         try {
             $reflected = new \ReflectionClass($castType);
+            if ($reflected->isEnum()) {
+                /* @var class-string $castType */
+                return $castType::from($value);
+            }
             if ($reflected->isSubclassOf(self::class)) {
                 /** @var BaseObject $class */
                 $class = new ($reflected->getName())();

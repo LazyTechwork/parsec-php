@@ -2,9 +2,9 @@
 
 namespace LazyTechwork\Parsec\Responses;
 
-class ObjectResult extends BaseResult
+final class ObjectResult extends BaseResult
 {
-    protected object $value;
+    private object $value;
 
     /**
      * Класс используется в качестве результата в функциях, возвращающих Object.
