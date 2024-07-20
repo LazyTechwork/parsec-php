@@ -27,21 +27,63 @@ class BasePerson extends BaseObject
      */
     protected string $tabNum;
 
-    /**
-     * Класс, используемый для описания сотрудника.
-     *
-     * @param UuidInterface $ID          Уникальный ключ сотрудника
-     * @param string        $LAST_NAME   Фамилия
-     * @param string        $FIRST_NAME  Имя
-     * @param string        $MIDDLE_NAME Отчество
-     * @param string        $TAB_NUM     Табельный номер
-     */
-    public function __construct(UuidInterface $ID, #[\SensitiveParameter] string $LAST_NAME, #[\SensitiveParameter] string $FIRST_NAME, #[\SensitiveParameter] string $MIDDLE_NAME, #[\SensitiveParameter] string $TAB_NUM)
+    public function getId(): UuidInterface
     {
-        $this->id = $ID;
-        $this->lastName = $LAST_NAME;
-        $this->firstName = $FIRST_NAME;
-        $this->middleName = $MIDDLE_NAME;
-        $this->tabNum = $TAB_NUM;
+        return $this->id;
+    }
+
+    public function setId(UuidInterface $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(#[\SensitiveParameter] string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(#[\SensitiveParameter] string $firstName): static
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getMiddleName(): string
+    {
+        return $this->middleName;
+    }
+
+    public function setMiddleName(#[\SensitiveParameter] string $middleName): static
+    {
+        $this->middleName = $middleName;
+
+        return $this;
+    }
+
+    public function getTabNum(): string
+    {
+        return $this->tabNum;
+    }
+
+    public function setTabNum(string $tabNum): static
+    {
+        $this->tabNum = $tabNum;
+
+        return $this;
     }
 }

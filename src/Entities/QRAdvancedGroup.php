@@ -16,20 +16,6 @@ final class QRAdvancedGroup extends BaseObject
      */
     private string $name;
 
-    /**
-     * Класс, используемый для описания группы контроллеров расширенных QR-кодов.
-     *
-     * @param int    $ID   Идентификатор группы контроллеров
-     * @param string $name Название группы
-     */
-    public function __construct(
-        int $ID,
-        string $name
-    ) {
-        $this->id = $ID;
-        $this->name = $name;
-    }
-
     public function getId(): int
     {
         return $this->id;
@@ -53,4 +39,23 @@ final class QRAdvancedGroup extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'int',
+            'name' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'name' => 'name',
+    ];
 }

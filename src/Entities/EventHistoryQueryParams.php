@@ -76,64 +76,6 @@ final class EventHistoryQueryParams extends BaseObject
      */
     private bool $useLocalTime;
 
-    /**
-     * Класс, используемый для описания критериев формируемого отчета по событиям. В качестве любого параметра может быть передан null. В таком случае данный критерий не будет использован при отборе событий в отчет.
-     * Параметры даты и времени передаются в UTC при значении параметра UseLocalTime == false (по умолчанию).
-     * Если в часовой диапазон попадает момент окончания суток (24.00), то такой диапазон нужно разбить на два: с ХХ часов по 24.00 и с 00.00 часов до YY. При этом для первой части диапазона используются параметры StartTime0 и EndTime0, а для второй части - StartTime1 и EndTime1.
-     *
-     * @param UuidInterface[]                                      $IDs               Массив ключей событий, которые будут отобраны в отчет. Если задан, все остальные параметры игнорируются
-     * @param UuidInterface[]                                      $ParentEventID     Массив ключей «первичных» событий. В отчет будут отобраны все события, связанные с первичными событиями. Если задан, все параметры (кроме IDs) игнорируются. Значение ParentEventId={Guid.Empty} интерперетируется так же, как значение {null} (для совместимости с Delphi)
-     * @param \DateTimeInterface                                   $StartDate         дата начала временного периода, за который создается отчет
-     * @param \DateTimeInterface                                   $EndDate           Дата окончания временного периода, за который создается отчет
-     * @param \DateTimeInterface                                   $StartTime0        Время начала часового диапазона внутри временного периода. В отчет будут отобраны только события, произошедшие в течение этого диапазона
-     * @param \DateTimeInterface                                   $EndTime0          Время окончания часового диапазона внутри временного периода. В отчет будут отобраны только события, произошедшие в течение этого диапазона.
-     * @param \DateTimeInterface                                   $StartTime1        Время начала второго часового диапазона внутри временного периода. Задействуется, если в диапазон попадает окончание суток.*
-     * @param \DateTimeInterface                                   $EndTime1          Время окончания второго часового диапазона внутри временного периода. Задействуется, если в диапазон попадает окончание суток.*
-     * @param UuidInterface[]                                      $Territories       Массив ключей территорий, по которым будет сформирован отчет
-     * @param UuidInterface[]                                      $Operators         Параметр предназначен для внутреннего использования
-     * @param array<int|\LazyTechwork\Parsec\Enums\TransactionKey> $TransactionTypes  Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций из приведенной ниже таблицы.
-     * @param UuidInterface[]                                      $Organizations     Массив ключей подразделений, по которым будет сформирован отчет
-     * @param UuidInterface[]                                      $Users             Массив ключей пользователей, по событиям которых будет сформирован отчет
-     * @param bool                                                 $EventsWithoutUser Параметр предназначен для внутреннего использования
-     * @param int|null                                             $MaxResultSize     Максимальное количество событий, отображенных в отчете. При передаче null отображается количество событий по умолчанию (5000 шт.).
-     * @param bool                                                 $UseLocalTime      при установке данного параметра в true события будут фильтроваться и возвращаться с учетом часового пояса контроллеров
-     */
-    public function __construct(
-        array $IDs,
-        array $ParentEventID,
-        \DateTimeInterface $StartDate,
-        \DateTimeInterface $EndDate,
-        \DateTimeInterface $StartTime0,
-        \DateTimeInterface $EndTime0,
-        \DateTimeInterface $StartTime1,
-        \DateTimeInterface $EndTime1,
-        array $Territories,
-        array $Operators,
-        array $TransactionTypes,
-        array $Organizations,
-        array $Users,
-        bool $EventsWithoutUser,
-        ?int $MaxResultSize = 5000,
-        bool $UseLocalTime = false,
-    ) {
-        $this->ids = $IDs;
-        $this->parentEventId = $ParentEventID;
-        $this->startDate = $StartDate;
-        $this->endDate = $EndDate;
-        $this->startTime0 = $StartTime0;
-        $this->endTime0 = $EndTime0;
-        $this->startTime1 = $StartTime1;
-        $this->endTime1 = $EndTime1;
-        $this->territories = $Territories;
-        $this->operators = $Operators;
-        $this->transactionTypes = $TransactionTypes;
-        $this->organizations = $Organizations;
-        $this->users = $Users;
-        $this->eventsWithoutUser = $EventsWithoutUser;
-        $this->maxResultSize = $MaxResultSize;
-        $this->useLocalTime = $UseLocalTime;
-    }
-
     public function getIds(): array
     {
         return $this->ids;

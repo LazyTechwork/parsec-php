@@ -11,20 +11,6 @@ final class OrgUnit extends BaseOrgUnit
      */
     private UuidInterface $parentId;
 
-    /**
-     * Класс, используемый для описания подразделения.
-     *
-     * @param UuidInterface $ID        Уникальный ключ подразделения
-     * @param string        $NAME      Название подразделения
-     * @param string        $DESC      Описание подразделения
-     * @param UuidInterface $PARENT_ID Уникальный ключ родительского подразделения
-     */
-    public function __construct(UuidInterface $ID, string $NAME, string $DESC, UuidInterface $PARENT_ID)
-    {
-        parent::__construct($ID, $NAME, $DESC);
-        $this->parentId = $PARENT_ID;
-    }
-
     public function getParentId(): UuidInterface
     {
         return $this->parentId;
@@ -36,4 +22,24 @@ final class OrgUnit extends BaseOrgUnit
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'NAME' => 'string',
+            'DESC' => 'string',
+            'PARENT_ID' => 'guid',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'PARENT_ID' => 'parentId',
+    ];
 }

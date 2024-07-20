@@ -2,7 +2,6 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\Enums\TerritoryType;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -11,21 +10,6 @@ use Ramsey\Uuid\UuidInterface;
 class Territory extends BaseTerritory
 {
     protected UuidInterface $parentId;
-
-    /**
-     * Класс, используемый для описания территории.
-     *
-     * @param UuidInterface     $ID        Уникальный ключ территории
-     * @param TerritoryType|int $TYPE      Тип объекта территории
-     * @param string            $NAME      Название территории
-     * @param string            $DESC      Описание территории
-     * @param UuidInterface     $PARENT_ID Уникальный ключ родительской территории
-     */
-    public function __construct(UuidInterface $ID, TerritoryType|int $TYPE, string $NAME, string $DESC, UuidInterface $PARENT_ID)
-    {
-        parent::__construct($ID, $TYPE, $NAME, $DESC);
-        $this->parentId = $PARENT_ID;
-    }
 
     public function getParentId(): UuidInterface
     {
@@ -38,4 +22,24 @@ class Territory extends BaseTerritory
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'NAME' => 'string',
+            'DESC' => 'string',
+            'PARENT_ID' => 'guid',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'PARENT_ID' => 'parentId',
+    ];
 }

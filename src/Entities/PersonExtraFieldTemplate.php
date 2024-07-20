@@ -23,18 +23,6 @@ final class PersonExtraFieldTemplate extends BaseObject
      */
     private string $name;
 
-    /**
-     * @param UuidInterface $ID   Уникальный ключ шаблона
-     * @param XmlTypeCode   $TYPE Тип представленных данных
-     * @param string        $NAME Наименование шаблона
-     */
-    public function __construct(UuidInterface $ID, XmlTypeCode $TYPE, string $NAME)
-    {
-        $this->id = $ID;
-        $this->type = $TYPE;
-        $this->name = $NAME;
-    }
-
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -70,4 +58,25 @@ final class PersonExtraFieldTemplate extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'TYPE' => 'LazyTechwork\\Parsec\\Enums\\XmlTypeCode',
+            'NAME' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'TYPE' => 'type',
+        'NAME' => 'name',
+    ];
 }

@@ -18,18 +18,6 @@ final class HardwareState extends BaseObject
      */
     private int $state;
 
-    /**
-     * Класс, используемый для описания состояния территории.
-     *
-     * @param UuidInterface $TerritoryID Уникальный ключ территории
-     * @param int           $State       Набор состояний территории – битовая маска размером 4 байта
-     */
-    public function __construct(UuidInterface $TerritoryID, int $State)
-    {
-        $this->territoryId = $TerritoryID;
-        $this->state = $State;
-    }
-
     public function getTerritoryId(): UuidInterface
     {
         return $this->territoryId;
@@ -53,4 +41,23 @@ final class HardwareState extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'TerritoryID' => 'guid',
+            'State' => 'int',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'TerritoryID' => 'territoryId',
+        'State' => 'state',
+    ];
 }

@@ -12,17 +12,6 @@ final class EventObject extends BaseObject
      */
     private array $values;
 
-    /**
-     * Класс, используемый для описания данных события.
-     *
-     * @param object[] $Values Массив значений полей, описывающих событие
-     */
-    public function __construct(
-        array $Values
-    ) {
-        $this->values = $Values;
-    }
-
     public function getValues(): array
     {
         return $this->values;
@@ -34,4 +23,21 @@ final class EventObject extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'Values' => 'array',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'Values' => 'values',
+    ];
 }

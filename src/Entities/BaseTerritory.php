@@ -27,26 +27,6 @@ class BaseTerritory extends BaseObject
      */
     protected string $description;
 
-    /**
-     * Базовый класс, используемый для описания территории.
-     *
-     * @param UuidInterface     $ID   Уникальный ключ территории
-     * @param TerritoryType|int $TYPE Тип объекта территории
-     * @param string            $NAME Название территории
-     * @param string            $DESC Описание территории
-     */
-    public function __construct(
-        UuidInterface $ID,
-        TerritoryType|int $TYPE,
-        string $NAME,
-        string $DESC
-    ) {
-        $this->id = $ID;
-        $this->type = $TYPE;
-        $this->name = $NAME;
-        $this->description = $DESC;
-    }
-
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -94,4 +74,26 @@ class BaseTerritory extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'NAME' => 'string',
+            'DESC' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'TYPE' => 'type',
+        'NAME' => 'name',
+        'DESC' => 'description',
+    ];
 }

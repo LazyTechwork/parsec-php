@@ -2,8 +2,6 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use JetBrains\PhpStorm\Deprecated;
-
 /**
  * Класс, используемый для описания организации.
  */
@@ -25,26 +23,6 @@ final class Domain extends BaseObject
      * @var bool Признак организации SYSTEM
      */
     private bool $isSystem;
-
-    /**
-     * Класс, используемый для описания организации.
-     *
-     * @param string $NAME            Наименование организации
-     * @param string $DESCRIPTION     Описание организации
-     * @param bool   $VISITOR_CONTROL Признак Бюро Пропусков (не используется начиная с версии 3.2)
-     * @param bool   $IS_SYSTEM       Признак организации SYSTEM
-     */
-    public function __construct(
-        string $NAME,
-        string $DESCRIPTION,
-        #[Deprecated] bool $VISITOR_CONTROL,
-        bool $IS_SYSTEM
-    ) {
-        $this->name = $NAME;
-        $this->description = $DESCRIPTION;
-        $this->visitorControl = $VISITOR_CONTROL;
-        $this->isSystem = $IS_SYSTEM;
-    }
 
     public function getName(): string
     {
@@ -93,4 +71,27 @@ final class Domain extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'NAME' => 'string',
+            'DESCRIPTION' => 'string',
+            'VISITOR_CONTROL' => 'bool',
+            'IS_SYSTEM' => 'bool',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'NAME' => 'name',
+        'DESCRIPTION' => 'description',
+        'VISITOR_CONTROL' => 'visitorControl',
+        'IS_SYSTEM' => 'isSystem',
+    ];
 }

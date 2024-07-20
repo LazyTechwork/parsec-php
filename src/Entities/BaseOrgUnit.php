@@ -19,20 +19,6 @@ class BaseOrgUnit extends BaseObject
      */
     protected string $description;
 
-    /**
-     * Класс, используемый для описания подразделения.
-     *
-     * @param UuidInterface $ID   Уникальный ключ подразделения
-     * @param string        $NAME Название подразделения
-     * @param string        $DESC Описание подразделения
-     */
-    public function __construct(UuidInterface $ID, string $NAME, string $DESC)
-    {
-        $this->id = $ID;
-        $this->name = $NAME;
-        $this->description = $DESC;
-    }
-
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -68,4 +54,25 @@ class BaseOrgUnit extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'NAME' => 'string',
+            'DESC' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'NAME' => 'name',
+        'DESC' => 'description',
+    ];
 }

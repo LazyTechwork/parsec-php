@@ -30,29 +30,6 @@ final class EventsHistory extends BaseObject
      */
     private array $territoryNames;
 
-    /**
-     * Класс, используемый для описания событий системы.
-     *
-     * @param Event[]         $Events
-     * @param UuidInterface[] $Persons
-     * @param string[]        $PersonFullNames
-     * @param UuidInterface[] $Territories
-     * @param string[]        $TerritoryNames
-     */
-    public function __construct(
-        array $Events,
-        array $Persons,
-        #[\SensitiveParameter] array $PersonFullNames,
-        array $Territories,
-        array $TerritoryNames,
-    ) {
-        $this->events = $Events;
-        $this->persons = $Persons;
-        $this->personNames = $PersonFullNames;
-        $this->territories = $Territories;
-        $this->territoryNames = $TerritoryNames;
-    }
-
     public function getEvents(): array
     {
         return $this->events;
@@ -112,4 +89,29 @@ final class EventsHistory extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'Events' => 'array',
+            'Persons' => 'array',
+            'PersonFullNames' => 'array',
+            'Territories' => 'array',
+            'TerritoryNames' => 'array',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'Events' => 'events',
+        'Persons' => 'persons',
+        'PersonFullNames' => 'personNames',
+        'Territories' => 'territories',
+        'TerritoryNames' => 'territoryNames',
+    ];
 }

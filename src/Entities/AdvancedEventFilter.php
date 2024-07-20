@@ -2,7 +2,6 @@
 
 namespace LazyTechwork\Parsec\Entities;
 
-use LazyTechwork\Parsec\Enums\TransactionKey;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -22,22 +21,6 @@ final class AdvancedEventFilter extends EventFilter
      * @var UuidInterface[] Массив ключей пользователей, по которым будут отбираться события
      */
     private array $users;
-
-    /**
-     * Расширенный класс, используемый для отбора событий по подписке.
-     *
-     * @param array<int|TransactionKey> $TransactionTypes Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций
-     * @param UuidInterface[]           $Territories      Массив ключей территорий, по которым будут отбираться события
-     * @param UuidInterface[]           $Organizations    Массив ключей подразделений, по которым будут отбираться события
-     * @param UuidInterface[]           $Users            Массив ключей пользователей, по которым будут отбираться события
-     */
-    public function __construct(array $TransactionTypes, array $Territories, array $Organizations, array $Users)
-    {
-        parent::__construct($TransactionTypes);
-        $this->territories = $Territories;
-        $this->organizations = $Organizations;
-        $this->users = $Users;
-    }
 
     public function getTerritories(): array
     {
@@ -74,4 +57,26 @@ final class AdvancedEventFilter extends EventFilter
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'TransactionTypes' => 'array',
+            'Territories' => 'array',
+            'Organizations' => 'array',
+            'Users' => 'array',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'Territories' => 'territories',
+        'Organizations' => 'organizations',
+        'Users' => 'users',
+    ];
 }

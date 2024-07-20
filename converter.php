@@ -52,17 +52,13 @@ protected function casts(): array
 protected array \$attributeMapping = {$mapping};
 PHP;
 
-    $constructorCode = [];
-    preg_match('/[\s\n\t]*\/\*\*(?:\s*\*\s*\X+)+\*\/[\s\n\t]*public function __construct[\s\n\t]*\([^({}]+{[^{}]+}\n/u', $classFileContents, $constructorCode, PREG_OFFSET_CAPTURE);
+    $replacementCount = 0;
+    $classFileContents = preg_replace('/^\s+\/\*\*(?:[\n\s]+\*\s*[^*]+)+\s*\*\/[\s\n\t]*public function __construct[\s\n\t]*\([^({}]+{[^{}]+}\n$/um', '', $classFileContents, 1, $replacementCount);
 
-    if (empty($constructorCode[0])) {
-        echo 'Not found constructor code in '.$class->getFileName()."\n";
-        var_dump($constructorCode);
-        exit;
+    if ($replacementCount === 0) {
+        echo 'Cannot remove constructor in file: '.$class->getFileName()."\n";
     }
-    $constructorPosition = $constructorCode[0][1];
-    $constructorLength = mb_strlen($constructorCode[0][0]);
-    $classFileContents = mb_substr($classFileContents, 0, $constructorPosition).mb_substr($classFileContents, $constructorPosition + $constructorLength);
+
     if (($endParenthesisPos = mb_strrpos($classFileContents, '}', encoding: 'utf8')) !== false) {
         $generatedCode = mb_substr_replace($classFileContents, "\n".$generatedCode."\n", $endParenthesisPos, 0);
         file_put_contents($class->getFileName(), $generatedCode);

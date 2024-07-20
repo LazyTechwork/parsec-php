@@ -23,23 +23,6 @@ final class AccessGroup extends BaseObject
      */
     private IdentifierType|int $identifierType;
 
-    /**
-     * Класс, используемый для описания группы доступа.
-     *
-     * @param UuidInterface      $ID          Уникальный ключ группы доступа
-     * @param string             $NAME        Название группы доступа
-     * @param IdentifierType|int $IDENTIFTYPE Тип группы доступа
-     */
-    public function __construct(
-        UuidInterface $ID,
-        string $NAME,
-        IdentifierType|int $IDENTIFTYPE,
-    ) {
-        $this->id = $ID;
-        $this->name = $NAME;
-        $this->identifierType = $IDENTIFTYPE;
-    }
-
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -75,4 +58,24 @@ final class AccessGroup extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'NAME' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'NAME' => 'name',
+        'IDENTIFTYPE' => 'identifierType',
+    ];
 }

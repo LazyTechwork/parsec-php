@@ -22,20 +22,6 @@ class BaseIdentifier extends BaseObject
      */
     protected bool $isPrimary;
 
-    /**
-     * Класс, используемый для описания идентификатора.
-     *
-     * @param string        $CODE       Код идентификатора (строка, содержащая число в шестнадцатеричном формате, длинной ровно 8 символов)
-     * @param UuidInterface $PERSON_ID  Уникальный ключ сотрудника
-     * @param bool          $IS_PRIMARY Признак, является ли идентификатор первичным
-     */
-    public function __construct(#[\SensitiveParameter] string $CODE, UuidInterface $PERSON_ID, bool $IS_PRIMARY)
-    {
-        $this->code = $CODE;
-        $this->personId = $PERSON_ID;
-        $this->isPrimary = $IS_PRIMARY;
-    }
-
     public function getCode(): string
     {
         return $this->code;
@@ -71,4 +57,25 @@ class BaseIdentifier extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'CODE' => 'string',
+            'PERSON_ID' => 'guid',
+            'IS_PRIMARY' => 'bool',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'CODE' => 'code',
+        'PERSON_ID' => 'personId',
+        'IS_PRIMARY' => 'isPrimary',
+    ];
 }

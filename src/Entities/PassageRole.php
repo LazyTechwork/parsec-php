@@ -22,23 +22,6 @@ final class PassageRole extends BaseObject
      */
     private string $description;
 
-    /**
-     * Класс, используемый для описания роли группового прохода.
-     *
-     * @param UuidInterface $ID          Уникальный ключ роли
-     * @param string        $NAME        Название роли
-     * @param string        $DESCRIPTION Описание роли
-     */
-    public function __construct(
-        UuidInterface $ID,
-        string $NAME,
-        string $DESCRIPTION
-    ) {
-        $this->id = $ID;
-        $this->name = $NAME;
-        $this->description = $DESCRIPTION;
-    }
-
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -74,4 +57,25 @@ final class PassageRole extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'guid',
+            'NAME' => 'string',
+            'DESCRIPTION' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'NAME' => 'name',
+        'DESCRIPTION' => 'description',
+    ];
 }

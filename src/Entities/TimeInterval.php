@@ -16,18 +16,6 @@ final class TimeInterval extends BaseObject
      */
     private \DateTimeInterface $end;
 
-    /**
-     * Класс, используемый для представления временного интервала.
-     *
-     * @param \DateTimeInterface $START Начало интервала
-     * @param \DateTimeInterface $END   Окончание интервала
-     */
-    public function __construct(\DateTimeInterface $START, \DateTimeInterface $END)
-    {
-        $this->start = $START;
-        $this->end = $END;
-    }
-
     public function getStart(): \DateTimeInterface
     {
         return $this->start;
@@ -51,4 +39,23 @@ final class TimeInterval extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'START' => 'DateTimeInterface',
+            'END' => 'DateTimeInterface',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'START' => 'start',
+        'END' => 'end',
+    ];
 }

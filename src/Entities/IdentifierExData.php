@@ -22,23 +22,6 @@ final class IdentifierExData extends BaseObject
      */
     private UuidInterface $ownerComponentId;
 
-    /**
-     * Класс, используемый для описания дополнительных свойств идентификатора.
-     *
-     * @param UuidInterface $PASSAGE_ROLE_ID    Уникальный ключ роли группового прохода
-     * @param int           $ENTRY_LIMIT        Максимальное разрешенное количество проходов (значение «-1» - не ограниченное количество проходов; «0» - доступ запрещен; «127» – максимально возможное ограничение)
-     * @param UuidInterface $OWNED_COMPONENT_ID Уникальный ключ компонента «Дверь», владельцем которого является идентификатор (используется в функционале «Владелец кабинета»)
-     */
-    public function __construct(
-        UuidInterface $PASSAGE_ROLE_ID,
-        int $ENTRY_LIMIT,
-        UuidInterface $OWNED_COMPONENT_ID
-    ) {
-        $this->passageRoleId = $PASSAGE_ROLE_ID;
-        $this->entryLimit = $ENTRY_LIMIT;
-        $this->ownerComponentId = $OWNED_COMPONENT_ID;
-    }
-
     public function getPassageRoleId(): UuidInterface
     {
         return $this->passageRoleId;
@@ -74,4 +57,25 @@ final class IdentifierExData extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'PASSAGE_ROLE_ID' => 'guid',
+            'ENTRY_LIMIT' => 'int',
+            'OWNED_COMPONENT_ID' => 'guid',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'PASSAGE_ROLE_ID' => 'passageRoleId',
+        'ENTRY_LIMIT' => 'entryLimit',
+        'OWNED_COMPONENT_ID' => 'ownerComponentId',
+    ];
 }

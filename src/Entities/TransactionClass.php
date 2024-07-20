@@ -21,24 +21,6 @@ final class TransactionClass extends BaseObject
      */
     private bool $isUser;
 
-    /**
-     * Класс, используемый для описания категорий событий системы.
-     * Каждое событие в системе ParsecNET принадлежит одной или более категорий.
-     *
-     * @param int    $ID      ID категории события системы. Всегда равен 1 поразрядно сдвинутой влево на N позиций, где N принимает значения от 0 до 63. Таким образом каждый категория – это 1 бит в битовой маске события
-     * @param string $NAME    Название категории событий системы
-     * @param bool   $IS_USER Признак пользовательской категории
-     */
-    public function __construct(
-        int $ID,
-        string $NAME,
-        bool $IS_USER
-    ) {
-        $this->id = $ID;
-        $this->name = $NAME;
-        $this->isUser = $IS_USER;
-    }
-
     public function getId(): int
     {
         return $this->id;
@@ -74,4 +56,25 @@ final class TransactionClass extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'ID' => 'int',
+            'NAME' => 'string',
+            'IS_USER' => 'bool',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ID' => 'id',
+        'NAME' => 'name',
+        'IS_USER' => 'isUser',
+    ];
 }

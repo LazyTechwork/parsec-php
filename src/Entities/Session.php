@@ -22,23 +22,6 @@ final class Session extends BaseObject
      */
     private UuidInterface $rootTerritoryId;
 
-    /**
-     * Класс, содержащий информацию для сессии.
-     *
-     * @param UuidInterface $SessionID       Уникальный ключ сессии, используемый при выполнении дальнейших операций
-     * @param UuidInterface $RootOrgUnitID   ID корневого элемента дерева персонала
-     * @param UuidInterface $RootTerritoryID ID корневого элемента дерева территорий
-     */
-    public function __construct(
-        #[\SensitiveParameter] UuidInterface $SessionID,
-        UuidInterface $RootOrgUnitID,
-        UuidInterface $RootTerritoryID
-    ) {
-        $this->sessionId = $SessionID;
-        $this->rootOrgUnitId = $RootOrgUnitID;
-        $this->rootTerritoryId = $RootTerritoryID;
-    }
-
     public function getSessionId(): UuidInterface
     {
         return $this->sessionId;
@@ -53,4 +36,25 @@ final class Session extends BaseObject
     {
         return $this->rootTerritoryId;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'SessionID' => 'guid',
+            'RootOrgUnitID' => 'guid',
+            'RootTerritoryID' => 'guid',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'SessionID' => 'sessionId',
+        'RootOrgUnitID' => 'rootOrgUnitId',
+        'RootTerritoryID' => 'rootTerritoryId',
+    ];
 }

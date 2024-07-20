@@ -30,29 +30,6 @@ final class Event extends BaseObject
      */
     private int $territoryIndex;
 
-    /**
-     * Класс, используемый для описания события системы.
-     *
-     * @param \DateTimeInterface $EventDate           Дата события
-     * @param EventType          $EventType           Тип события
-     * @param int                $EventPersonIndex    Индекс сотрудника в EventsHistory
-     * @param string             $CODE                Код идентификатора
-     * @param int                $EventTerritoryIndex Индекс территории в EventsHistory
-     */
-    public function __construct(
-        \DateTimeInterface $EventDate,
-        EventType $EventType,
-        int $EventPersonIndex,
-        string $CODE,
-        int $EventTerritoryIndex
-    ) {
-        $this->date = $EventDate;
-        $this->type = $EventType;
-        $this->personIndex = $EventPersonIndex;
-        $this->identifierCode = $CODE;
-        $this->territoryIndex = $EventTerritoryIndex;
-    }
-
     public function getDate(): \DateTimeInterface
     {
         return $this->date;
@@ -112,4 +89,29 @@ final class Event extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'EventDate' => 'DateTimeInterface',
+            'EventType' => 'LazyTechwork\\Parsec\\Enums\\EventType',
+            'EventPersonIndex' => 'int',
+            'CODE' => 'string',
+            'EventTerritoryIndex' => 'int',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'EventDate' => 'date',
+        'EventType' => 'type',
+        'EventPersonIndex' => 'personIndex',
+        'CODE' => 'identifierCode',
+        'EventTerritoryIndex' => 'territoryIndex',
+    ];
 }

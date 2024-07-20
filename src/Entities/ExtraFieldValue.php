@@ -18,20 +18,6 @@ final class ExtraFieldValue extends BaseObject
      */
     private mixed $value;
 
-    /**
-     * Класс, используемый для описания значения дополнительного поля сотрудника.
-     *
-     * @param UuidInterface $TEMPLATE_ID Уникальный ключ шаблона
-     * @param mixed         $VALUE       Значение поля
-     */
-    public function __construct(
-        UuidInterface $TEMPLATE_ID,
-        mixed $VALUE
-    ) {
-        $this->fieldId = $TEMPLATE_ID;
-        $this->value = $VALUE;
-    }
-
     public function getFieldId(): UuidInterface
     {
         return $this->fieldId;
@@ -55,4 +41,23 @@ final class ExtraFieldValue extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'TEMPLATE_ID' => 'guid',
+            'VALUE' => 'mixed',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'TEMPLATE_ID' => 'fieldId',
+        'VALUE' => 'value',
+    ];
 }

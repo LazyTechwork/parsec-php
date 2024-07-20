@@ -9,17 +9,6 @@ class EventFilter extends BaseObject
      */
     protected array $transactionTypes;
 
-    /**
-     * Класс, используемый для отбора событий по подписке по типу транзакций.
-     *
-     * @param array<int|\LazyTechwork\Parsec\Enums\TransactionKey> $TransactionTypes Массив ключей типов транзакций. В качестве параметра можно использовать один или несколько ключей транзакций
-     */
-    public function __construct(
-        array $TransactionTypes
-    ) {
-        $this->transactionTypes = $TransactionTypes;
-    }
-
     public function getTransactionTypes(): array
     {
         return $this->transactionTypes;
@@ -31,4 +20,21 @@ class EventFilter extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'TransactionTypes' => 'array',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'TransactionTypes' => 'transactionTypes',
+    ];
 }

@@ -22,23 +22,6 @@ final class SubAccessGroup extends BaseObject
      */
     private array $territories;
 
-    /**
-     * Класс, используемый для описания подгруппы доступа.
-     *
-     * @param UuidInterface   $SubGroupID  Уникальный ключ группы
-     * @param UuidInterface   $ScheduleID  Уникальный ключ расписания
-     * @param UuidInterface[] $Territories Массив ключей территорий
-     */
-    public function __construct(
-        UuidInterface $SubGroupID,
-        UuidInterface $ScheduleID,
-        array $Territories
-    ) {
-        $this->id = $SubGroupID;
-        $this->scheduleId = $ScheduleID;
-        $this->territories = $Territories;
-    }
-
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -74,4 +57,25 @@ final class SubAccessGroup extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'SubGroupID' => 'guid',
+            'ScheduleID' => 'guid',
+            'Territories' => 'array',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'SubGroupID' => 'id',
+        'ScheduleID' => 'scheduleId',
+        'Territories' => 'territories',
+    ];
 }

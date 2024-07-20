@@ -32,32 +32,6 @@ final class QRAdvancedData extends BaseObject
      */
     private int $cardId;
 
-    /**
-     * Класс, используемый для задания прав доступа расширенного QR-кода.
-     *
-     * @param \DateTimeInterface $DateFrom Дата начала срока действия QR-кода
-     * @param \DateTimeInterface $DateTo   Дата окончания срока действия QR-кода
-     * @param \DateTimeInterface $TimeFrom Начало временного интервала внутри срока действия QR-кода. Необязательный параметр
-     * @param \DateTimeInterface $TimeTo   Конец временного интервала внутри срока действия QR-кода. Необязательный параметр
-     * @param int[]              $Groups   Массив ключей групп контроллеров, через которые QR-код имеет право прохода
-     * @param int                $CardID   Идентификатор субъекта доступа
-     */
-    public function __construct(
-        \DateTimeInterface $DateFrom,
-        \DateTimeInterface $DateTo,
-        \DateTimeInterface $TimeFrom,
-        \DateTimeInterface $TimeTo,
-        array $Groups,
-        int $CardID
-    ) {
-        $this->dateFrom = $DateFrom;
-        $this->dateTo = $DateTo;
-        $this->timeFrom = $TimeFrom;
-        $this->timeTo = $TimeTo;
-        $this->groups = $Groups;
-        $this->cardId = $CardID;
-    }
-
     public function getDateFrom(): \DateTimeInterface
     {
         return $this->dateFrom;
@@ -129,4 +103,31 @@ final class QRAdvancedData extends BaseObject
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'DateFrom' => 'DateTimeInterface',
+            'DateTo' => 'DateTimeInterface',
+            'TimeFrom' => 'DateTimeInterface',
+            'TimeTo' => 'DateTimeInterface',
+            'Groups' => 'array',
+            'CardID' => 'int',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'DateFrom' => 'dateFrom',
+        'DateTo' => 'dateTo',
+        'TimeFrom' => 'timeFrom',
+        'TimeTo' => 'timeTo',
+        'Groups' => 'groups',
+        'CardID' => 'cardId',
+    ];
 }

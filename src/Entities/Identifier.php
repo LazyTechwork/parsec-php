@@ -27,26 +27,6 @@ class Identifier extends BaseIdentifier
      */
     protected string $name;
 
-    /**
-     * Класс, используемый для описания идентификатора.
-     *
-     * @param string             $CODE           Код идентификатора (строка, содержащая число в шестнадцатеричном формате, длинной ровно 8 символов)
-     * @param UuidInterface      $PERSON_ID      Уникальный ключ сотрудника
-     * @param bool               $IS_PRIMARY     Признак, является ли идентификатор первичным
-     * @param UuidInterface      $ACCGROUP_ID    Уникальный ключ группы доступа идентификатора
-     * @param int                $PRIVILEGE_MASK Маска привилегий
-     * @param IdentifierType|int $IDENTIFTYPE    Тип идентификатора
-     * @param string             $NAME           Наименование идентификатора (используется в информационных целях)
-     */
-    public function __construct(#[\SensitiveParameter] string $CODE, UuidInterface $PERSON_ID, bool $IS_PRIMARY, UuidInterface $ACCGROUP_ID, int $PRIVILEGE_MASK, IdentifierType|int $IDENTIFTYPE, string $NAME)
-    {
-        parent::__construct($CODE, $PERSON_ID, $IS_PRIMARY);
-        $this->accessGroupId = $ACCGROUP_ID;
-        $this->privilegeMask = $PRIVILEGE_MASK;
-        $this->type = $IDENTIFTYPE;
-        $this->name = $NAME;
-    }
-
     public function getAccessGroupId(): UuidInterface
     {
         return $this->accessGroupId;
@@ -94,4 +74,29 @@ class Identifier extends BaseIdentifier
 
         return $this;
     }
+
+    /**
+     * @return array<string, string|class-string|callable>
+     */
+    protected function casts(): array
+    {
+        return [
+            'CODE' => 'string',
+            'PERSON_ID' => 'guid',
+            'IS_PRIMARY' => 'bool',
+            'ACCGROUP_ID' => 'guid',
+            'PRIVILEGE_MASK' => 'int',
+            'NAME' => 'string',
+        ];
+    }
+
+    /**
+     * @var array<string, string> stdClass -> this
+     */
+    protected array $attributeMapping = [
+        'ACCGROUP_ID' => 'accessGroupId',
+        'PRIVILEGE_MASK' => 'privilegeMask',
+        'IDENTIFTYPE' => 'type',
+        'NAME' => 'name',
+    ];
 }
