@@ -2,29 +2,24 @@
 
 namespace LazyTechwork\Parsec\Responses;
 
+/**
+ * Базовый класс, используется в качестве результата исполнения операции.
+ *
+ * Результат выполнения может быть следующим:
+ * 0 – операция выполнена успешно;
+ * -1 – операция выполнена с ошибкой;
+ * Значения >0 планируется использовать для кодов специфических ошибок.
+ */
 class BaseResult
 {
-    protected int $result;
-    protected string $errorMessage;
-
     /**
-     * Базовый класс, используется в качестве результата исполнения операции.
-     *
-     * Результат выполнения может быть следующим:
-     * 0 – операция выполнена успешно;
-     * -1 – операция выполнена с ошибкой;
-     * Значения >0 планируется использовать для кодов специфических ошибок.
-     *
-     * @param int    $Result       Результат выполнения операции
-     * @param string $ErrorMessage Описание ошибки, произошедшей при выполнении операции
+     * @var int Результат выполнения операции
      */
-    public function __construct(
-        int $Result,
-        string $ErrorMessage
-    ) {
-        $this->result = $Result;
-        $this->errorMessage = $ErrorMessage;
-    }
+    protected int $result;
+    /**
+     * @var string|null Описание ошибки, произошедшей при выполнении операции
+     */
+    protected ?string $errorMessage;
 
     public function getResult(): int
     {
@@ -34,5 +29,14 @@ class BaseResult
     public function getErrorMessage(): string
     {
         return $this->errorMessage;
+    }
+
+    public static function fromStdClass(\stdClass $obj): static
+    {
+        $instance = new static();
+        $instance->result = $obj->Result;
+        $instance->errorMessage = $obj->ErrorMessage ?? null;
+
+        return $instance;
     }
 }
