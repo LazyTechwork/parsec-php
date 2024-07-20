@@ -53,9 +53,15 @@ protected array \$attributeMapping = {$mapping};
 PHP;
 
     $constructorCode = [];
-    preg_match('/[\s\n\t]*\/\*\*[^\\\;(){}]+\*\/[\s\n\t]*public function __construct[\s\n\t]*\([^({}]+{[^{}]+}\n/u', $classFileContents, $constructorCode, PREG_OFFSET_CAPTURE);
-    $constructorPosition = $constructorCode[1][1];
-    $constructorLength = mb_strlen($constructorCode[1][0]);
+    preg_match('/[\s\n\t]*\/\*\*(?:\s*\*\s*\X+)+\*\/[\s\n\t]*public function __construct[\s\n\t]*\([^({}]+{[^{}]+}\n/u', $classFileContents, $constructorCode, PREG_OFFSET_CAPTURE);
+
+    if (empty($constructorCode[0])) {
+        echo 'Not found constructor code in '.$class->getFileName()."\n";
+        var_dump($constructorCode);
+        exit;
+    }
+    $constructorPosition = $constructorCode[0][1];
+    $constructorLength = mb_strlen($constructorCode[0][0]);
     $classFileContents = mb_substr($classFileContents, 0, $constructorPosition).mb_substr($classFileContents, $constructorPosition + $constructorLength);
     if (($endParenthesisPos = mb_strrpos($classFileContents, '}', encoding: 'utf8')) !== false) {
         $generatedCode = mb_substr_replace($classFileContents, "\n".$generatedCode."\n", $endParenthesisPos, 0);
@@ -63,12 +69,7 @@ PHP;
     }
 }
 
-function mb_substr_replace($original, $replacement, $position, $length)
+function mb_substr_replace(string $original, string $replacement, int $position, int $length): string
 {
-    $startString = mb_substr($original, 0, $position, 'UTF-8');
-    $endString = mb_substr($original, $position + $length, mb_strlen($original), 'UTF-8');
-
-    $out = $startString.$replacement.$endString;
-
-    return $out;
+    return mb_substr($original, 0, $position).$replacement.mb_substr($original, $position + $length, mb_strlen($original));
 }
