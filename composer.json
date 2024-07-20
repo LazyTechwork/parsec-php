@@ -1,27 +1,44 @@
 {
-    "name": "lazytechwork/parsec-php",
-    "description": "Client for integration with ParsecNET 3",
-    "type": "library",
-    "require": {
-        "php": ">=8.3",
-        "ext-xml": "*",
-        "ext-soap": "*",
-        "ramsey/uuid": "^4.7"
-    },
-    "autoload": {
-        "psr-4": {
-            "LazyTechwork\\Parsec\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Ivan Petrov",
-            "email": "lazytechwork@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require-dev": {
-        "phpstan/phpstan": "^1.11",
-        "friendsofphp/php-cs-fixer": "^3.59"
+  "name": "lazytechwork/parsec-php",
+  "version": "0.1.0",
+  "description": "Client for integration with ParsecNET 3",
+  "type": "library",
+  "require": {
+    "php": ">=8.3",
+    "ext-xml": "*",
+    "ext-soap": "*",
+    "guzzlehttp/guzzle": "^7.9.1",
+    "phpro/soap-client": "^4.0.0",
+    "php-soap/ext-soap-engine": "^1.6",
+    "guzzlehttp/psr7": "^2.7",
+    "symfony/cache": "^7.1"
+  },
+  "scripts": {
+    "generate": [
+      "vendor/bin/soap-client generate:types --config=config/soap-client.php",
+      "vendor/bin/soap-client generate:classmap --config=config/soap-client.php",
+      "vendor/bin/soap-client generate:client --config=config/soap-client.php"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "LazyTechwork\\Parsec\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Ivan Petrov",
+      "email": "lazytechwork@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require-dev": {
+    "phpstan/phpstan": "^1.11.7",
+    "friendsofphp/php-cs-fixer": "^3.59.3"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
 }
