@@ -60,7 +60,7 @@ abstract class BaseObject
         try {
             $reflected = new \ReflectionClass($castType);
             if ($reflected->isEnum()) {
-                /* @var class-string $castType */
+                /* @var class-string<\BackedEnum> $castType */
                 return $castType::from($value);
             }
             if ($reflected->isSubclassOf(self::class)) {
@@ -73,6 +73,11 @@ abstract class BaseObject
         }
 
         return $value;
+    }
+
+    public function getAttribute(string $name, mixed $default = null): mixed
+    {
+        return $this->attributes[$name] ?? $default;
     }
 
     /**
@@ -89,7 +94,13 @@ abstract class BaseObject
         }
 
         foreach ($values as $key => $value) {
-            $this->attributes[$this->attributeMapping[$key] ?? $key] = $this->castAttribute($this->attributeMapping[$key] ?? $key, $value);
+            $k = $this->attributeMapping[$key] ?? $key;
+
+            if (property_exists($this, $k)) {
+                $this->{$k} = $this->castAttribute($k, $value);
+            } else {
+                $this->attributes[$k] = $this->castAttribute($k, $value);
+            }
         }
 
         return $this;
