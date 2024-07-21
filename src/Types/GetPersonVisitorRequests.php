@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetPersonVisitorRequests implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $visitorID;
+    private Guid $visitorID;
 
     private bool $issued;
 
@@ -23,7 +23,7 @@ class GetPersonVisitorRequests implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $visitorID, bool $issued, bool $accepted, bool $declined, bool $active, bool $completed)
+    public function __construct(Guid $sessionID, Guid $visitorID, bool $issued, bool $accepted, bool $declined, bool $active, bool $completed)
     {
         $this->sessionID = $sessionID;
         $this->visitorID = $visitorID;
@@ -34,12 +34,12 @@ class GetPersonVisitorRequests implements RequestInterface
         $this->completed = $completed;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -47,12 +47,12 @@ class GetPersonVisitorRequests implements RequestInterface
         return $new;
     }
 
-    public function getVisitorID(): string
+    public function getVisitorID(): Guid
     {
         return $this->visitorID;
     }
 
-    public function withVisitorID(string $visitorID): static
+    public function withVisitorID(Guid $visitorID): static
     {
         $new = clone $this;
         $new->visitorID = $visitorID;

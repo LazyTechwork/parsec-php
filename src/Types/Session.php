@@ -4,18 +4,18 @@ namespace LazyTechwork\Parsec\Types;
 
 class Session
 {
-    private string $SessionID;
+    private Guid $SessionID;
 
-    private string $RootOrgUnitID;
+    private Guid $RootOrgUnitID;
 
-    private string $RootTerritoryID;
+    private Guid $RootTerritoryID;
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->SessionID;
     }
 
-    public function withSessionID(string $SessionID): static
+    public function withSessionID(Guid $SessionID): static
     {
         $new = clone $this;
         $new->SessionID = $SessionID;
@@ -23,12 +23,12 @@ class Session
         return $new;
     }
 
-    public function getRootOrgUnitID(): string
+    public function getRootOrgUnitID(): Guid
     {
         return $this->RootOrgUnitID;
     }
 
-    public function withRootOrgUnitID(string $RootOrgUnitID): static
+    public function withRootOrgUnitID(Guid $RootOrgUnitID): static
     {
         $new = clone $this;
         $new->RootOrgUnitID = $RootOrgUnitID;
@@ -36,12 +36,12 @@ class Session
         return $new;
     }
 
-    public function getRootTerritoryID(): string
+    public function getRootTerritoryID(): Guid
     {
         return $this->RootTerritoryID;
     }
 
-    public function withRootTerritoryID(string $RootTerritoryID): static
+    public function withRootTerritoryID(Guid $RootTerritoryID): static
     {
         $new = clone $this;
         $new->RootTerritoryID = $RootTerritoryID;

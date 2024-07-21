@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class LicenseRegisterServer implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?string $componentKey = null;
 
@@ -17,7 +17,7 @@ class LicenseRegisterServer implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?string $componentKey, ?string $serverID, ?string $serverAddress)
+    public function __construct(Guid $sessionID, ?string $componentKey, ?string $serverID, ?string $serverAddress)
     {
         $this->sessionID = $sessionID;
         $this->componentKey = $componentKey;
@@ -25,12 +25,12 @@ class LicenseRegisterServer implements RequestInterface
         $this->serverAddress = $serverAddress;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

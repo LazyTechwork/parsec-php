@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SetPersonExtraFieldValue implements RequestInterface
 {
-    private string $personEditSessionID;
+    private Guid $personEditSessionID;
 
-    private string $templateID;
+    private Guid $templateID;
 
     /**
      * @var mixed|null
@@ -20,19 +20,19 @@ class SetPersonExtraFieldValue implements RequestInterface
      *
      * @param mixed|null $value
      */
-    public function __construct(string $personEditSessionID, string $templateID, mixed $value)
+    public function __construct(Guid $personEditSessionID, Guid $templateID, mixed $value)
     {
         $this->personEditSessionID = $personEditSessionID;
         $this->templateID = $templateID;
         $this->value = $value;
     }
 
-    public function getPersonEditSessionID(): string
+    public function getPersonEditSessionID(): Guid
     {
         return $this->personEditSessionID;
     }
 
-    public function withPersonEditSessionID(string $personEditSessionID): static
+    public function withPersonEditSessionID(Guid $personEditSessionID): static
     {
         $new = clone $this;
         $new->personEditSessionID = $personEditSessionID;
@@ -40,12 +40,12 @@ class SetPersonExtraFieldValue implements RequestInterface
         return $new;
     }
 
-    public function getTemplateID(): string
+    public function getTemplateID(): Guid
     {
         return $this->templateID;
     }
 
-    public function withTemplateID(string $templateID): static
+    public function withTemplateID(Guid $templateID): static
     {
         $new = clone $this;
         $new->templateID = $templateID;

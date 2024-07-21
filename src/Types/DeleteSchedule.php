@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class DeleteSchedule implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $scheduleID;
+    private Guid $scheduleID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $scheduleID)
+    public function __construct(Guid $sessionID, Guid $scheduleID)
     {
         $this->sessionID = $sessionID;
         $this->scheduleID = $scheduleID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class DeleteSchedule implements RequestInterface
         return $new;
     }
 
-    public function getScheduleID(): string
+    public function getScheduleID(): Guid
     {
         return $this->scheduleID;
     }
 
-    public function withScheduleID(string $scheduleID): static
+    public function withScheduleID(Guid $scheduleID): static
     {
         $new = clone $this;
         $new->scheduleID = $scheduleID;

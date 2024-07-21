@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CreatePerson implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?Person $person = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?Person $person)
+    public function __construct(Guid $sessionID, ?Person $person)
     {
         $this->sessionID = $sessionID;
         $this->person = $person;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

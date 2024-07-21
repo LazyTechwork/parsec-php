@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CloseEventHistorySession implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $eventHistorySessionID;
+    private Guid $eventHistorySessionID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $eventHistorySessionID)
+    public function __construct(Guid $sessionID, Guid $eventHistorySessionID)
     {
         $this->sessionID = $sessionID;
         $this->eventHistorySessionID = $eventHistorySessionID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class CloseEventHistorySession implements RequestInterface
         return $new;
     }
 
-    public function getEventHistorySessionID(): string
+    public function getEventHistorySessionID(): Guid
     {
         return $this->eventHistorySessionID;
     }
 
-    public function withEventHistorySessionID(string $eventHistorySessionID): static
+    public function withEventHistorySessionID(Guid $eventHistorySessionID): static
     {
         $new = clone $this;
         $new->eventHistorySessionID = $eventHistorySessionID;

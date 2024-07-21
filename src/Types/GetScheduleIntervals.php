@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetScheduleIntervals implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $scheduleID;
+    private Guid $scheduleID;
 
     private \DateTimeInterface $from;
 
@@ -17,7 +17,7 @@ class GetScheduleIntervals implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $scheduleID, \DateTimeInterface $from, \DateTimeInterface $to)
+    public function __construct(Guid $sessionID, Guid $scheduleID, \DateTimeInterface $from, \DateTimeInterface $to)
     {
         $this->sessionID = $sessionID;
         $this->scheduleID = $scheduleID;
@@ -25,12 +25,12 @@ class GetScheduleIntervals implements RequestInterface
         $this->to = $to;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -38,12 +38,12 @@ class GetScheduleIntervals implements RequestInterface
         return $new;
     }
 
-    public function getScheduleID(): string
+    public function getScheduleID(): Guid
     {
         return $this->scheduleID;
     }
 
-    public function withScheduleID(string $scheduleID): static
+    public function withScheduleID(Guid $scheduleID): static
     {
         $new = clone $this;
         $new->scheduleID = $scheduleID;

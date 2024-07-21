@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SetPersonWorktimeSchedule implements RequestInterface
 {
-    private string $personEditSessionID;
+    private Guid $personEditSessionID;
 
-    private string $scheduleID;
+    private Guid $scheduleID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $personEditSessionID, string $scheduleID)
+    public function __construct(Guid $personEditSessionID, Guid $scheduleID)
     {
         $this->personEditSessionID = $personEditSessionID;
         $this->scheduleID = $scheduleID;
     }
 
-    public function getPersonEditSessionID(): string
+    public function getPersonEditSessionID(): Guid
     {
         return $this->personEditSessionID;
     }
 
-    public function withPersonEditSessionID(string $personEditSessionID): static
+    public function withPersonEditSessionID(Guid $personEditSessionID): static
     {
         $new = clone $this;
         $new->personEditSessionID = $personEditSessionID;
@@ -32,12 +32,12 @@ class SetPersonWorktimeSchedule implements RequestInterface
         return $new;
     }
 
-    public function getScheduleID(): string
+    public function getScheduleID(): Guid
     {
         return $this->scheduleID;
     }
 
-    public function withScheduleID(string $scheduleID): static
+    public function withScheduleID(Guid $scheduleID): static
     {
         $new = clone $this;
         $new->scheduleID = $scheduleID;

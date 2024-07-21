@@ -6,28 +6,28 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CreateTempAccessGroup implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $scheduleID;
+    private Guid $scheduleID;
 
     private ?ArrayOfGuid $territories = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $scheduleID, ?ArrayOfGuid $territories)
+    public function __construct(Guid $sessionID, Guid $scheduleID, ?ArrayOfGuid $territories)
     {
         $this->sessionID = $sessionID;
         $this->scheduleID = $scheduleID;
         $this->territories = $territories;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -35,12 +35,12 @@ class CreateTempAccessGroup implements RequestInterface
         return $new;
     }
 
-    public function getScheduleID(): string
+    public function getScheduleID(): Guid
     {
         return $this->scheduleID;
     }
 
-    public function withScheduleID(string $scheduleID): static
+    public function withScheduleID(Guid $scheduleID): static
     {
         $new = clone $this;
         $new->scheduleID = $scheduleID;

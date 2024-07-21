@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CreateAdvancedQRQGroup implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private int $groupID;
 
@@ -17,7 +17,7 @@ class CreateAdvancedQRQGroup implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, int $groupID, ?string $groupName, ?ArrayOfGuid $territories)
+    public function __construct(Guid $sessionID, int $groupID, ?string $groupName, ?ArrayOfGuid $territories)
     {
         $this->sessionID = $sessionID;
         $this->groupID = $groupID;
@@ -25,12 +25,12 @@ class CreateAdvancedQRQGroup implements RequestInterface
         $this->territories = $territories;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

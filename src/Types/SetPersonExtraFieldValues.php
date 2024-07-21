@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SetPersonExtraFieldValues implements RequestInterface
 {
-    private string $personEditSessionID;
+    private Guid $personEditSessionID;
 
     private ?ArrayOfExtraFieldValue $values = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $personEditSessionID, ?ArrayOfExtraFieldValue $values)
+    public function __construct(Guid $personEditSessionID, ?ArrayOfExtraFieldValue $values)
     {
         $this->personEditSessionID = $personEditSessionID;
         $this->values = $values;
     }
 
-    public function getPersonEditSessionID(): string
+    public function getPersonEditSessionID(): Guid
     {
         return $this->personEditSessionID;
     }
 
-    public function withPersonEditSessionID(string $personEditSessionID): static
+    public function withPersonEditSessionID(Guid $personEditSessionID): static
     {
         $new = clone $this;
         $new->personEditSessionID = $personEditSessionID;

@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class ValidateExtraFieldValue implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?ExtraFieldValue $value = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?ExtraFieldValue $value)
+    public function __construct(Guid $sessionID, ?ExtraFieldValue $value)
     {
         $this->sessionID = $sessionID;
         $this->value = $value;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

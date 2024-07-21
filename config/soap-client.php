@@ -1,8 +1,10 @@
 <?php
 
+use LazyTechwork\Parsec\TypeReplacers\GuidTypeReplacer;
 use Phpro\SoapClient\CodeGenerator\Assembler;
 use Phpro\SoapClient\CodeGenerator\Config\Config;
 use Phpro\SoapClient\CodeGenerator\Rules;
+use Phpro\SoapClient\Soap\Metadata\Manipulators\TypeReplacer\TypeReplacers;
 use Soap\Wsdl\Loader\FlatteningLoader;
 use Soap\Wsdl\Loader\StreamWrapperLoader;
 
@@ -19,6 +21,10 @@ return Config::create()
     ->setClassMapDestination('src')
     ->setClassMapName('ParsecClassmap')
     ->setClassMapNamespace('LazyTechwork\\Parsec')
+    ->setTypeReplacementStrategy(
+        TypeReplacers::defaults()
+            ->add(new GuidTypeReplacer())
+    )
     ->addRule(new Rules\AssembleRule(new Assembler\GetterAssembler(
         (new Assembler\GetterAssemblerOptions())->withBoolGetters()
     )))

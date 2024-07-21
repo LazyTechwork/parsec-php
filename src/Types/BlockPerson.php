@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class BlockPerson implements RequestInterface
 {
-    private string $personEditSessionID;
+    private Guid $personEditSessionID;
 
     private int $typeBlock;
 
     /**
      * Constructor.
      */
-    public function __construct(string $personEditSessionID, int $typeBlock)
+    public function __construct(Guid $personEditSessionID, int $typeBlock)
     {
         $this->personEditSessionID = $personEditSessionID;
         $this->typeBlock = $typeBlock;
     }
 
-    public function getPersonEditSessionID(): string
+    public function getPersonEditSessionID(): Guid
     {
         return $this->personEditSessionID;
     }
 
-    public function withPersonEditSessionID(string $personEditSessionID): static
+    public function withPersonEditSessionID(Guid $personEditSessionID): static
     {
         $new = clone $this;
         $new->personEditSessionID = $personEditSessionID;

@@ -4,9 +4,9 @@ namespace LazyTechwork\Parsec\Types;
 
 class PersonScheduleFix extends BaseObject
 {
-    private string $FIX_ID;
+    private Guid $FIX_ID;
 
-    private string $PERSON_ID;
+    private Guid $PERSON_ID;
 
     private int $TYPE_ID;
 
@@ -16,12 +16,12 @@ class PersonScheduleFix extends BaseObject
 
     private ?string $COMMENT = null;
 
-    public function getFIX_ID(): string
+    public function getFIX_ID(): Guid
     {
         return $this->FIX_ID;
     }
 
-    public function withFIX_ID(string $FIX_ID): static
+    public function withFIX_ID(Guid $FIX_ID): static
     {
         $new = clone $this;
         $new->FIX_ID = $FIX_ID;
@@ -29,12 +29,12 @@ class PersonScheduleFix extends BaseObject
         return $new;
     }
 
-    public function getPERSON_ID(): string
+    public function getPERSON_ID(): Guid
     {
         return $this->PERSON_ID;
     }
 
-    public function withPERSON_ID(string $PERSON_ID): static
+    public function withPERSON_ID(Guid $PERSON_ID): static
     {
         $new = clone $this;
         $new->PERSON_ID = $PERSON_ID;

@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetTerritory implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $territoryID;
+    private Guid $territoryID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $territoryID)
+    public function __construct(Guid $sessionID, Guid $territoryID)
     {
         $this->sessionID = $sessionID;
         $this->territoryID = $territoryID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class GetTerritory implements RequestInterface
         return $new;
     }
 
-    public function getTerritoryID(): string
+    public function getTerritoryID(): Guid
     {
         return $this->territoryID;
     }
 
-    public function withTerritoryID(string $territoryID): static
+    public function withTerritoryID(Guid $territoryID): static
     {
         $new = clone $this;
         $new->territoryID = $territoryID;

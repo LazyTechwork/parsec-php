@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class DeletePersonBioIdentifier implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $personID;
+    private Guid $personID;
 
     private ?string $systemID = null;
 
@@ -17,7 +17,7 @@ class DeletePersonBioIdentifier implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $personID, ?string $systemID, ?string $bioID)
+    public function __construct(Guid $sessionID, Guid $personID, ?string $systemID, ?string $bioID)
     {
         $this->sessionID = $sessionID;
         $this->personID = $personID;
@@ -25,12 +25,12 @@ class DeletePersonBioIdentifier implements RequestInterface
         $this->bioID = $bioID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -38,12 +38,12 @@ class DeletePersonBioIdentifier implements RequestInterface
         return $new;
     }
 
-    public function getPersonID(): string
+    public function getPersonID(): Guid
     {
         return $this->personID;
     }
 
-    public function withPersonID(string $personID): static
+    public function withPersonID(Guid $personID): static
     {
         $new = clone $this;
         $new->personID = $personID;

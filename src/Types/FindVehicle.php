@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class FindVehicle implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?string $number = null;
 
@@ -17,7 +17,7 @@ class FindVehicle implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?string $number, ?string $model, ?string $color)
+    public function __construct(Guid $sessionID, ?string $number, ?string $model, ?string $color)
     {
         $this->sessionID = $sessionID;
         $this->number = $number;
@@ -25,12 +25,12 @@ class FindVehicle implements RequestInterface
         $this->color = $color;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

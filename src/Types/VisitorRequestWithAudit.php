@@ -4,24 +4,24 @@ namespace LazyTechwork\Parsec\Types;
 
 class VisitorRequestWithAudit extends VisitorRequest
 {
-    private string $ISSUER_ID;
+    private Guid $ISSUER_ID;
 
     private \DateTimeInterface $RVISION_DATE;
 
-    private string $REVISOR_ID;
+    private Guid $REVISOR_ID;
 
     private ?string $REVISOR_COMMENTS = null;
 
     private \DateTimeInterface $ACTIVATE_DATE;
 
-    private string $ACTIVATOR_ID;
+    private Guid $ACTIVATOR_ID;
 
-    public function getISSUER_ID(): string
+    public function getISSUER_ID(): Guid
     {
         return $this->ISSUER_ID;
     }
 
-    public function withISSUER_ID(string $ISSUER_ID): static
+    public function withISSUER_ID(Guid $ISSUER_ID): static
     {
         $new = clone $this;
         $new->ISSUER_ID = $ISSUER_ID;
@@ -42,12 +42,12 @@ class VisitorRequestWithAudit extends VisitorRequest
         return $new;
     }
 
-    public function getREVISOR_ID(): string
+    public function getREVISOR_ID(): Guid
     {
         return $this->REVISOR_ID;
     }
 
-    public function withREVISOR_ID(string $REVISOR_ID): static
+    public function withREVISOR_ID(Guid $REVISOR_ID): static
     {
         $new = clone $this;
         $new->REVISOR_ID = $REVISOR_ID;
@@ -81,12 +81,12 @@ class VisitorRequestWithAudit extends VisitorRequest
         return $new;
     }
 
-    public function getACTIVATOR_ID(): string
+    public function getACTIVATOR_ID(): Guid
     {
         return $this->ACTIVATOR_ID;
     }
 
-    public function withACTIVATOR_ID(string $ACTIVATOR_ID): static
+    public function withACTIVATOR_ID(Guid $ACTIVATOR_ID): static
     {
         $new = clone $this;
         $new->ACTIVATOR_ID = $ACTIVATOR_ID;

@@ -6,22 +6,22 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CloseOrgUnitEditingSession implements RequestInterface
 {
-    private string $orgUnitEditSessionID;
+    private Guid $orgUnitEditSessionID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $orgUnitEditSessionID)
+    public function __construct(Guid $orgUnitEditSessionID)
     {
         $this->orgUnitEditSessionID = $orgUnitEditSessionID;
     }
 
-    public function getOrgUnitEditSessionID(): string
+    public function getOrgUnitEditSessionID(): Guid
     {
         return $this->orgUnitEditSessionID;
     }
 
-    public function withOrgUnitEditSessionID(string $orgUnitEditSessionID): static
+    public function withOrgUnitEditSessionID(Guid $orgUnitEditSessionID): static
     {
         $new = clone $this;
         $new->orgUnitEditSessionID = $orgUnitEditSessionID;

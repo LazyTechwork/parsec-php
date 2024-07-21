@@ -4,19 +4,19 @@ namespace LazyTechwork\Parsec\Types;
 
 class ExtraFieldValue extends BaseObject
 {
-    private string $TEMPLATE_ID;
+    private Guid $TEMPLATE_ID;
 
     /**
      * @var mixed|null
      */
     private mixed $VALUE = null;
 
-    public function getTEMPLATE_ID(): string
+    public function getTEMPLATE_ID(): Guid
     {
         return $this->TEMPLATE_ID;
     }
 
-    public function withTEMPLATE_ID(string $TEMPLATE_ID): static
+    public function withTEMPLATE_ID(Guid $TEMPLATE_ID): static
     {
         $new = clone $this;
         $new->TEMPLATE_ID = $TEMPLATE_ID;

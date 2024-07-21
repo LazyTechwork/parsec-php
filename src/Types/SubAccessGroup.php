@@ -4,18 +4,18 @@ namespace LazyTechwork\Parsec\Types;
 
 class SubAccessGroup extends BaseObject
 {
-    private string $SubGroupID;
+    private Guid $SubGroupID;
 
-    private string $ScheduleID;
+    private Guid $ScheduleID;
 
     private ?ArrayOfGuid $Territories = null;
 
-    public function getSubGroupID(): string
+    public function getSubGroupID(): Guid
     {
         return $this->SubGroupID;
     }
 
-    public function withSubGroupID(string $SubGroupID): static
+    public function withSubGroupID(Guid $SubGroupID): static
     {
         $new = clone $this;
         $new->SubGroupID = $SubGroupID;
@@ -23,12 +23,12 @@ class SubAccessGroup extends BaseObject
         return $new;
     }
 
-    public function getScheduleID(): string
+    public function getScheduleID(): Guid
     {
         return $this->ScheduleID;
     }
 
-    public function withScheduleID(string $ScheduleID): static
+    public function withScheduleID(Guid $ScheduleID): static
     {
         $new = clone $this;
         $new->ScheduleID = $ScheduleID;

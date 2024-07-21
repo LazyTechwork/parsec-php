@@ -4,7 +4,7 @@ namespace LazyTechwork\Parsec\Types;
 
 class Identifier extends BaseIdentifier
 {
-    private string $ACCGROUP_ID;
+    private Guid $ACCGROUP_ID;
 
     private int $PRIVILEGE_MASK;
 
@@ -12,12 +12,12 @@ class Identifier extends BaseIdentifier
 
     private ?string $NAME = null;
 
-    public function getACCGROUP_ID(): string
+    public function getACCGROUP_ID(): Guid
     {
         return $this->ACCGROUP_ID;
     }
 
-    public function withACCGROUP_ID(string $ACCGROUP_ID): static
+    public function withACCGROUP_ID(Guid $ACCGROUP_ID): static
     {
         $new = clone $this;
         $new->ACCGROUP_ID = $ACCGROUP_ID;

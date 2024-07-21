@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetOrgUnit implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $orgUnitID;
+    private Guid $orgUnitID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $orgUnitID)
+    public function __construct(Guid $sessionID, Guid $orgUnitID)
     {
         $this->sessionID = $sessionID;
         $this->orgUnitID = $orgUnitID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class GetOrgUnit implements RequestInterface
         return $new;
     }
 
-    public function getOrgUnitID(): string
+    public function getOrgUnitID(): Guid
     {
         return $this->orgUnitID;
     }
 
-    public function withOrgUnitID(string $orgUnitID): static
+    public function withOrgUnitID(Guid $orgUnitID): static
     {
         $new = clone $this;
         $new->orgUnitID = $orgUnitID;

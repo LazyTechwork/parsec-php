@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetEventHistoryResult implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $eventHistorySessionID;
+    private Guid $eventHistorySessionID;
 
     private ?ArrayOfGuid $fields = null;
 
@@ -19,7 +19,7 @@ class GetEventHistoryResult implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $eventHistorySessionID, ?ArrayOfGuid $fields, int $offset, int $count)
+    public function __construct(Guid $sessionID, Guid $eventHistorySessionID, ?ArrayOfGuid $fields, int $offset, int $count)
     {
         $this->sessionID = $sessionID;
         $this->eventHistorySessionID = $eventHistorySessionID;
@@ -28,12 +28,12 @@ class GetEventHistoryResult implements RequestInterface
         $this->count = $count;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -41,12 +41,12 @@ class GetEventHistoryResult implements RequestInterface
         return $new;
     }
 
-    public function getEventHistorySessionID(): string
+    public function getEventHistorySessionID(): Guid
     {
         return $this->eventHistorySessionID;
     }
 
-    public function withEventHistorySessionID(string $eventHistorySessionID): static
+    public function withEventHistorySessionID(Guid $eventHistorySessionID): static
     {
         $new = clone $this;
         $new->eventHistorySessionID = $eventHistorySessionID;

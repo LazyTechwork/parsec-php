@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetPersonsChangedAfter implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $orgID;
+    private Guid $orgID;
 
     private \DateTimeInterface $dateFrom;
 
@@ -17,7 +17,7 @@ class GetPersonsChangedAfter implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $orgID, \DateTimeInterface $dateFrom, bool $includeSubOrg)
+    public function __construct(Guid $sessionID, Guid $orgID, \DateTimeInterface $dateFrom, bool $includeSubOrg)
     {
         $this->sessionID = $sessionID;
         $this->orgID = $orgID;
@@ -25,12 +25,12 @@ class GetPersonsChangedAfter implements RequestInterface
         $this->includeSubOrg = $includeSubOrg;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -38,12 +38,12 @@ class GetPersonsChangedAfter implements RequestInterface
         return $new;
     }
 
-    public function getOrgID(): string
+    public function getOrgID(): Guid
     {
         return $this->orgID;
     }
 
-    public function withOrgID(string $orgID): static
+    public function withOrgID(Guid $orgID): static
     {
         $new = clone $this;
         $new->orgID = $orgID;

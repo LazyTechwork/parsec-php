@@ -4,18 +4,18 @@ namespace LazyTechwork\Parsec\Types;
 
 class IdentifierExData extends BaseObject
 {
-    private string $PASSAGE_ROLE_ID;
+    private Guid $PASSAGE_ROLE_ID;
 
     private int $ENTRY_LIMIT;
 
-    private string $OWNED_COMPONENT_ID;
+    private Guid $OWNED_COMPONENT_ID;
 
-    public function getPASSAGE_ROLE_ID(): string
+    public function getPASSAGE_ROLE_ID(): Guid
     {
         return $this->PASSAGE_ROLE_ID;
     }
 
-    public function withPASSAGE_ROLE_ID(string $PASSAGE_ROLE_ID): static
+    public function withPASSAGE_ROLE_ID(Guid $PASSAGE_ROLE_ID): static
     {
         $new = clone $this;
         $new->PASSAGE_ROLE_ID = $PASSAGE_ROLE_ID;
@@ -36,12 +36,12 @@ class IdentifierExData extends BaseObject
         return $new;
     }
 
-    public function getOWNED_COMPONENT_ID(): string
+    public function getOWNED_COMPONENT_ID(): Guid
     {
         return $this->OWNED_COMPONENT_ID;
     }
 
-    public function withOWNED_COMPONENT_ID(string $OWNED_COMPONENT_ID): static
+    public function withOWNED_COMPONENT_ID(Guid $OWNED_COMPONENT_ID): static
     {
         $new = clone $this;
         $new->OWNED_COMPONENT_ID = $OWNED_COMPONENT_ID;

@@ -6,7 +6,7 @@ class BaseIdentifier extends BaseObject
 {
     private ?string $CODE = null;
 
-    private string $PERSON_ID;
+    private Guid $PERSON_ID;
 
     private bool $IS_PRIMARY;
 
@@ -23,12 +23,12 @@ class BaseIdentifier extends BaseObject
         return $new;
     }
 
-    public function getPERSON_ID(): string
+    public function getPERSON_ID(): Guid
     {
         return $this->PERSON_ID;
     }
 
-    public function withPERSON_ID(string $PERSON_ID): static
+    public function withPERSON_ID(Guid $PERSON_ID): static
     {
         $new = clone $this;
         $new->PERSON_ID = $PERSON_ID;

@@ -6,28 +6,28 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetPersonExtraFieldValue implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $personID;
+    private Guid $personID;
 
-    private string $templateID;
+    private Guid $templateID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $personID, string $templateID)
+    public function __construct(Guid $sessionID, Guid $personID, Guid $templateID)
     {
         $this->sessionID = $sessionID;
         $this->personID = $personID;
         $this->templateID = $templateID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -35,12 +35,12 @@ class GetPersonExtraFieldValue implements RequestInterface
         return $new;
     }
 
-    public function getPersonID(): string
+    public function getPersonID(): Guid
     {
         return $this->personID;
     }
 
-    public function withPersonID(string $personID): static
+    public function withPersonID(Guid $personID): static
     {
         $new = clone $this;
         $new->personID = $personID;
@@ -48,12 +48,12 @@ class GetPersonExtraFieldValue implements RequestInterface
         return $new;
     }
 
-    public function getTemplateID(): string
+    public function getTemplateID(): Guid
     {
         return $this->templateID;
     }
 
-    public function withTemplateID(string $templateID): static
+    public function withTemplateID(Guid $templateID): static
     {
         $new = clone $this;
         $new->templateID = $templateID;

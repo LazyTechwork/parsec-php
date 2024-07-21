@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class EventsUnsubscribe implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $subscriptionID;
+    private Guid $subscriptionID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $subscriptionID)
+    public function __construct(Guid $sessionID, Guid $subscriptionID)
     {
         $this->sessionID = $sessionID;
         $this->subscriptionID = $subscriptionID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class EventsUnsubscribe implements RequestInterface
         return $new;
     }
 
-    public function getSubscriptionID(): string
+    public function getSubscriptionID(): Guid
     {
         return $this->subscriptionID;
     }
 
-    public function withSubscriptionID(string $subscriptionID): static
+    public function withSubscriptionID(Guid $subscriptionID): static
     {
         $new = clone $this;
         $new->subscriptionID = $subscriptionID;

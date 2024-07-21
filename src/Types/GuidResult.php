@@ -4,14 +4,14 @@ namespace LazyTechwork\Parsec\Types;
 
 class GuidResult extends BaseResult
 {
-    private string $Value;
+    private Guid $Value;
 
-    public function getValue(): string
+    public function getValue(): Guid
     {
         return $this->Value;
     }
 
-    public function withValue(string $Value): static
+    public function withValue(Guid $Value): static
     {
         $new = clone $this;
         $new->Value = $Value;

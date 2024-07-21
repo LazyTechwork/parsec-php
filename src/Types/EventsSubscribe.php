@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class EventsSubscribe implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?EventFilter $eventFilter = null;
 
@@ -19,7 +19,7 @@ class EventsSubscribe implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?EventFilter $eventFilter, int $eventFormat, int $httpMethod, ?string $urlDestination)
+    public function __construct(Guid $sessionID, ?EventFilter $eventFilter, int $eventFormat, int $httpMethod, ?string $urlDestination)
     {
         $this->sessionID = $sessionID;
         $this->eventFilter = $eventFilter;
@@ -28,12 +28,12 @@ class EventsSubscribe implements RequestInterface
         $this->urlDestination = $urlDestination;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

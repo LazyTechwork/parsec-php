@@ -2,6 +2,7 @@
 
 namespace LazyTechwork\Parsec;
 
+use LazyTechwork\Parsec\Encoders\GuidEncoder;
 use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
@@ -18,6 +19,11 @@ class ParsecClientFactory
                 ->withEncoderRegistry(
                     EncoderRegistry::default()
                         ->addClassMapCollection(ParsecClassmap::getCollection())
+                        ->addSimpleTypeConverter(
+                            'http://microsoft.com/wsdl/types/',
+                            'guid',
+                            new GuidEncoder()
+                        )
                 )
             // If you want to enable WSDL caching:
             // ->withCache()

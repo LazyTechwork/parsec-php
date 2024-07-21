@@ -4,16 +4,16 @@ namespace LazyTechwork\Parsec\Types;
 
 class HardwareState extends BaseObject
 {
-    private string $TerritoryID;
+    private Guid $TerritoryID;
 
     private int $State;
 
-    public function getTerritoryID(): string
+    public function getTerritoryID(): Guid
     {
         return $this->TerritoryID;
     }
 
-    public function withTerritoryID(string $TerritoryID): static
+    public function withTerritoryID(Guid $TerritoryID): static
     {
         $new = clone $this;
         $new->TerritoryID = $TerritoryID;

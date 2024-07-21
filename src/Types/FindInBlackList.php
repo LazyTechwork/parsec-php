@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class FindInBlackList implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?string $lastname = null;
 
@@ -17,7 +17,7 @@ class FindInBlackList implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?string $lastname, ?string $firstname, ?string $middlename)
+    public function __construct(Guid $sessionID, ?string $lastname, ?string $firstname, ?string $middlename)
     {
         $this->sessionID = $sessionID;
         $this->lastname = $lastname;
@@ -25,12 +25,12 @@ class FindInBlackList implements RequestInterface
         $this->middlename = $middlename;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

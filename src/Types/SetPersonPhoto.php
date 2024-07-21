@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SetPersonPhoto implements RequestInterface
 {
-    private string $personEditSessionID;
+    private Guid $personEditSessionID;
 
     /**
      * @var mixed|null
@@ -18,18 +18,18 @@ class SetPersonPhoto implements RequestInterface
      *
      * @param mixed|null $photoByteArray
      */
-    public function __construct(string $personEditSessionID, mixed $photoByteArray)
+    public function __construct(Guid $personEditSessionID, mixed $photoByteArray)
     {
         $this->personEditSessionID = $personEditSessionID;
         $this->photoByteArray = $photoByteArray;
     }
 
-    public function getPersonEditSessionID(): string
+    public function getPersonEditSessionID(): Guid
     {
         return $this->personEditSessionID;
     }
 
-    public function withPersonEditSessionID(string $personEditSessionID): static
+    public function withPersonEditSessionID(Guid $personEditSessionID): static
     {
         $new = clone $this;
         $new->personEditSessionID = $personEditSessionID;

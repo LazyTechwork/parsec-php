@@ -4,15 +4,15 @@ namespace LazyTechwork\Parsec\Types;
 
 class VisitorRequest
 {
-    private string $ID;
+    private Guid $ID;
 
     private int $NUMBER;
 
     private \DateTimeInterface $DATE;
 
-    private string $ORGUNIT_ID;
+    private Guid $ORGUNIT_ID;
 
-    private string $PERSON_ID;
+    private Guid $PERSON_ID;
 
     private ?string $PERSON_INFO = null;
 
@@ -24,12 +24,12 @@ class VisitorRequest
 
     private \DateTimeInterface $ADMIT_END;
 
-    public function getID(): string
+    public function getID(): Guid
     {
         return $this->ID;
     }
 
-    public function withID(string $ID): static
+    public function withID(Guid $ID): static
     {
         $new = clone $this;
         $new->ID = $ID;
@@ -63,12 +63,12 @@ class VisitorRequest
         return $new;
     }
 
-    public function getORGUNIT_ID(): string
+    public function getORGUNIT_ID(): Guid
     {
         return $this->ORGUNIT_ID;
     }
 
-    public function withORGUNIT_ID(string $ORGUNIT_ID): static
+    public function withORGUNIT_ID(Guid $ORGUNIT_ID): static
     {
         $new = clone $this;
         $new->ORGUNIT_ID = $ORGUNIT_ID;
@@ -76,12 +76,12 @@ class VisitorRequest
         return $new;
     }
 
-    public function getPERSON_ID(): string
+    public function getPERSON_ID(): Guid
     {
         return $this->PERSON_ID;
     }
 
-    public function withPERSON_ID(string $PERSON_ID): static
+    public function withPERSON_ID(Guid $PERSON_ID): static
     {
         $new = clone $this;
         $new->PERSON_ID = $PERSON_ID;

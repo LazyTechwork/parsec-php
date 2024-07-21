@@ -6,18 +6,18 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SendVerificationCommand implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $territoryID;
+    private Guid $territoryID;
 
-    private string $personID;
+    private Guid $personID;
 
     private bool $passAllow;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $territoryID, string $personID, bool $passAllow)
+    public function __construct(Guid $sessionID, Guid $territoryID, Guid $personID, bool $passAllow)
     {
         $this->sessionID = $sessionID;
         $this->territoryID = $territoryID;
@@ -25,12 +25,12 @@ class SendVerificationCommand implements RequestInterface
         $this->passAllow = $passAllow;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -38,12 +38,12 @@ class SendVerificationCommand implements RequestInterface
         return $new;
     }
 
-    public function getTerritoryID(): string
+    public function getTerritoryID(): Guid
     {
         return $this->territoryID;
     }
 
-    public function withTerritoryID(string $territoryID): static
+    public function withTerritoryID(Guid $territoryID): static
     {
         $new = clone $this;
         $new->territoryID = $territoryID;
@@ -51,12 +51,12 @@ class SendVerificationCommand implements RequestInterface
         return $new;
     }
 
-    public function getPersonID(): string
+    public function getPersonID(): Guid
     {
         return $this->personID;
     }
 
-    public function withPersonID(string $personID): static
+    public function withPersonID(Guid $personID): static
     {
         $new = clone $this;
         $new->personID = $personID;

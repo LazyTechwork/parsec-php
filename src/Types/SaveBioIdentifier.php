@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SaveBioIdentifier implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?BioIdentifier $bioIdentifier = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?BioIdentifier $bioIdentifier)
+    public function __construct(Guid $sessionID, ?BioIdentifier $bioIdentifier)
     {
         $this->sessionID = $sessionID;
         $this->bioIdentifier = $bioIdentifier;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

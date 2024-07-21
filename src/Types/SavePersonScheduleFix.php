@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SavePersonScheduleFix implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?PersonScheduleFix $fix = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?PersonScheduleFix $fix)
+    public function __construct(Guid $sessionID, ?PersonScheduleFix $fix)
     {
         $this->sessionID = $sessionID;
         $this->fix = $fix;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

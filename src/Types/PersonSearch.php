@@ -6,9 +6,9 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class PersonSearch implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $fieldID;
+    private Guid $fieldID;
 
     private int $relation;
 
@@ -28,7 +28,7 @@ class PersonSearch implements RequestInterface
      * @param mixed|null $value
      * @param mixed|null $value1
      */
-    public function __construct(string $sessionID, string $fieldID, int $relation, mixed $value, mixed $value1)
+    public function __construct(Guid $sessionID, Guid $fieldID, int $relation, mixed $value, mixed $value1)
     {
         $this->sessionID = $sessionID;
         $this->fieldID = $fieldID;
@@ -37,12 +37,12 @@ class PersonSearch implements RequestInterface
         $this->value1 = $value1;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -50,12 +50,12 @@ class PersonSearch implements RequestInterface
         return $new;
     }
 
-    public function getFieldID(): string
+    public function getFieldID(): Guid
     {
         return $this->fieldID;
     }
 
-    public function withFieldID(string $fieldID): static
+    public function withFieldID(Guid $fieldID): static
     {
         $new = clone $this;
         $new->fieldID = $fieldID;

@@ -6,7 +6,7 @@ class EventHistoryQueryParams
 {
     private ?ArrayOfGuid $IDs = null;
 
-    private ?string $ParentEventID = null;
+    private ?Guid $ParentEventID = null;
 
     private ?\DateTimeInterface $StartDate = null;
 
@@ -49,12 +49,12 @@ class EventHistoryQueryParams
         return $new;
     }
 
-    public function getParentEventID(): ?string
+    public function getParentEventID(): ?Guid
     {
         return $this->ParentEventID;
     }
 
-    public function withParentEventID(?string $ParentEventID): static
+    public function withParentEventID(?Guid $ParentEventID): static
     {
         $new = clone $this;
         $new->ParentEventID = $ParentEventID;

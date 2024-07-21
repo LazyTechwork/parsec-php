@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetAnyData implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?string $data = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?string $data)
+    public function __construct(Guid $sessionID, ?string $data)
     {
         $this->sessionID = $sessionID;
         $this->data = $data;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

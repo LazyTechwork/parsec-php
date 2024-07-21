@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetHardwareState implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?ArrayOfGuid $territoryIDs = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?ArrayOfGuid $territoryIDs)
+    public function __construct(Guid $sessionID, ?ArrayOfGuid $territoryIDs)
     {
         $this->sessionID = $sessionID;
         $this->territoryIDs = $territoryIDs;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

@@ -4,7 +4,7 @@ namespace LazyTechwork\Parsec\Types;
 
 class PersonExtraFieldTemplate
 {
-    private string $ID;
+    private Guid $ID;
 
     /**
      * @var 'None'|'Item'|'Node'|'Document'|'Element'|'Attribute'|'Namespace'|'ProcessingInstruction'|'Comment'|'Text'|'AnyAtomicType'|'UntypedAtomic'|'String'|'Boolean'|'Decimal'|'Float'|'Double'|'Duration'|'DateTime'|'Time'|'Date'|'GYearMonth'|'GYear'|'GMonthDay'|'GDay'|'GMonth'|'HexBinary'|'Base64Binary'|'AnyUri'|'QName'|'Notation'|'NormalizedString'|'Token'|'Language'|'NmToken'|'Name'|'NCName'|'Id'|'Idref'|'Entity'|'Integer'|'NonPositiveInteger'|'NegativeInteger'|'Long'|'Int'|'Short'|'Byte'|'NonNegativeInteger'|'UnsignedLong'|'UnsignedInt'|'UnsignedShort'|'UnsignedByte'|'PositiveInteger'|'YearMonthDuration'|'DayTimeDuration'
@@ -19,12 +19,12 @@ class PersonExtraFieldTemplate
 
     private int $ORDER_INDEX;
 
-    public function getID(): string
+    public function getID(): Guid
     {
         return $this->ID;
     }
 
-    public function withID(string $ID): static
+    public function withID(Guid $ID): static
     {
         $new = clone $this;
         $new->ID = $ID;

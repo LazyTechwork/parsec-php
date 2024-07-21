@@ -4,16 +4,16 @@ namespace LazyTechwork\Parsec\Types;
 
 class TerritoryWithComponent extends Territory
 {
-    private string $COMPONENT_ID;
+    private Guid $COMPONENT_ID;
 
     private int $FEATURE_MASK;
 
-    public function getCOMPONENT_ID(): string
+    public function getCOMPONENT_ID(): Guid
     {
         return $this->COMPONENT_ID;
     }
 
-    public function withCOMPONENT_ID(string $COMPONENT_ID): static
+    public function withCOMPONENT_ID(Guid $COMPONENT_ID): static
     {
         $new = clone $this;
         $new->COMPONENT_ID = $COMPONENT_ID;

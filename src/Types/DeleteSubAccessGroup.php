@@ -6,28 +6,28 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class DeleteSubAccessGroup implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $accessGroupID;
+    private Guid $accessGroupID;
 
-    private string $subGroupID;
+    private Guid $subGroupID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $accessGroupID, string $subGroupID)
+    public function __construct(Guid $sessionID, Guid $accessGroupID, Guid $subGroupID)
     {
         $this->sessionID = $sessionID;
         $this->accessGroupID = $accessGroupID;
         $this->subGroupID = $subGroupID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -35,12 +35,12 @@ class DeleteSubAccessGroup implements RequestInterface
         return $new;
     }
 
-    public function getAccessGroupID(): string
+    public function getAccessGroupID(): Guid
     {
         return $this->accessGroupID;
     }
 
-    public function withAccessGroupID(string $accessGroupID): static
+    public function withAccessGroupID(Guid $accessGroupID): static
     {
         $new = clone $this;
         $new->accessGroupID = $accessGroupID;
@@ -48,12 +48,12 @@ class DeleteSubAccessGroup implements RequestInterface
         return $new;
     }
 
-    public function getSubGroupID(): string
+    public function getSubGroupID(): Guid
     {
         return $this->subGroupID;
     }
 
-    public function withSubGroupID(string $subGroupID): static
+    public function withSubGroupID(Guid $subGroupID): static
     {
         $new = clone $this;
         $new->subGroupID = $subGroupID;

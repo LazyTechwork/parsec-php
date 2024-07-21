@@ -4,9 +4,9 @@ namespace LazyTechwork\Parsec\Types;
 
 class BioIdentifier extends BaseObject
 {
-    private string $IDENTIFIER_ID;
+    private Guid $IDENTIFIER_ID;
 
-    private string $PERSON_ID;
+    private Guid $PERSON_ID;
 
     private ?string $SYSTEM_ID = null;
 
@@ -17,12 +17,12 @@ class BioIdentifier extends BaseObject
      */
     private mixed $BIO_DESCRIPTOR = null;
 
-    public function getIDENTIFIER_ID(): string
+    public function getIDENTIFIER_ID(): Guid
     {
         return $this->IDENTIFIER_ID;
     }
 
-    public function withIDENTIFIER_ID(string $IDENTIFIER_ID): static
+    public function withIDENTIFIER_ID(Guid $IDENTIFIER_ID): static
     {
         $new = clone $this;
         $new->IDENTIFIER_ID = $IDENTIFIER_ID;
@@ -30,12 +30,12 @@ class BioIdentifier extends BaseObject
         return $new;
     }
 
-    public function getPERSON_ID(): string
+    public function getPERSON_ID(): Guid
     {
         return $this->PERSON_ID;
     }
 
-    public function withPERSON_ID(string $PERSON_ID): static
+    public function withPERSON_ID(Guid $PERSON_ID): static
     {
         $new = clone $this;
         $new->PERSON_ID = $PERSON_ID;

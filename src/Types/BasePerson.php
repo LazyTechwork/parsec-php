@@ -4,7 +4,7 @@ namespace LazyTechwork\Parsec\Types;
 
 class BasePerson extends BaseObject
 {
-    private string $ID;
+    private Guid $ID;
 
     private ?string $FIRST_NAME = null;
 
@@ -14,12 +14,12 @@ class BasePerson extends BaseObject
 
     private ?string $TAB_NUM = null;
 
-    public function getID(): string
+    public function getID(): Guid
     {
         return $this->ID;
     }
 
-    public function withID(string $ID): static
+    public function withID(Guid $ID): static
     {
         $new = clone $this;
         $new->ID = $ID;

@@ -6,13 +6,13 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class LicenseRegisterFeatureObject implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?string $componentKey = null;
 
     private ?string $serverID = null;
 
-    private string $featureID;
+    private Guid $featureID;
 
     /**
      * @var mixed|null
@@ -24,7 +24,7 @@ class LicenseRegisterFeatureObject implements RequestInterface
      *
      * @param mixed|null $value
      */
-    public function __construct(string $sessionID, ?string $componentKey, ?string $serverID, string $featureID, mixed $value)
+    public function __construct(Guid $sessionID, ?string $componentKey, ?string $serverID, Guid $featureID, mixed $value)
     {
         $this->sessionID = $sessionID;
         $this->componentKey = $componentKey;
@@ -33,12 +33,12 @@ class LicenseRegisterFeatureObject implements RequestInterface
         $this->value = $value;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -72,12 +72,12 @@ class LicenseRegisterFeatureObject implements RequestInterface
         return $new;
     }
 
-    public function getFeatureID(): string
+    public function getFeatureID(): Guid
     {
         return $this->featureID;
     }
 
-    public function withFeatureID(string $featureID): static
+    public function withFeatureID(Guid $featureID): static
     {
         $new = clone $this;
         $new->featureID = $featureID;

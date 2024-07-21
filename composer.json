@@ -11,13 +11,15 @@
     "phpro/soap-client": "^4.0.0",
     "php-soap/ext-soap-engine": "^1.6",
     "guzzlehttp/psr7": "^2.7",
-    "symfony/cache": "^7.1"
+    "symfony/cache": "^7.1",
+    "ramsey/uuid": "5.x-dev"
   },
   "scripts": {
     "generate": [
       "vendor/bin/soap-client generate:types --config=config/soap-client.php",
       "vendor/bin/soap-client generate:classmap --config=config/soap-client.php",
-      "vendor/bin/soap-client generate:client --config=config/soap-client.php"
+      "vendor/bin/soap-client generate:client --config=config/soap-client.php",
+      "vendor/bin/php-cs-fixer fix"
     ]
   },
   "autoload": {

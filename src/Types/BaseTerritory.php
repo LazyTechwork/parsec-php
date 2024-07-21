@@ -4,7 +4,7 @@ namespace LazyTechwork\Parsec\Types;
 
 class BaseTerritory
 {
-    private string $ID;
+    private Guid $ID;
 
     private int $TYPE;
 
@@ -12,12 +12,12 @@ class BaseTerritory
 
     private ?string $DESC = null;
 
-    public function getID(): string
+    public function getID(): Guid
     {
         return $this->ID;
     }
 
-    public function withID(string $ID): static
+    public function withID(Guid $ID): static
     {
         $new = clone $this;
         $new->ID = $ID;

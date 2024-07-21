@@ -6,11 +6,11 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetEvents implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $TerritoryID;
+    private Guid $TerritoryID;
 
-    private string $PersNodeID;
+    private Guid $PersNodeID;
 
     private \DateTimeInterface $dtFrom;
 
@@ -19,7 +19,7 @@ class GetEvents implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $TerritoryID, string $PersNodeID, \DateTimeInterface $dtFrom, \DateTimeInterface $dtTo)
+    public function __construct(Guid $sessionID, Guid $TerritoryID, Guid $PersNodeID, \DateTimeInterface $dtFrom, \DateTimeInterface $dtTo)
     {
         $this->sessionID = $sessionID;
         $this->TerritoryID = $TerritoryID;
@@ -28,12 +28,12 @@ class GetEvents implements RequestInterface
         $this->dtTo = $dtTo;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -41,12 +41,12 @@ class GetEvents implements RequestInterface
         return $new;
     }
 
-    public function getTerritoryID(): string
+    public function getTerritoryID(): Guid
     {
         return $this->TerritoryID;
     }
 
-    public function withTerritoryID(string $TerritoryID): static
+    public function withTerritoryID(Guid $TerritoryID): static
     {
         $new = clone $this;
         $new->TerritoryID = $TerritoryID;
@@ -54,12 +54,12 @@ class GetEvents implements RequestInterface
         return $new;
     }
 
-    public function getPersNodeID(): string
+    public function getPersNodeID(): Guid
     {
         return $this->PersNodeID;
     }
 
-    public function withPersNodeID(string $PersNodeID): static
+    public function withPersNodeID(Guid $PersNodeID): static
     {
         $new = clone $this;
         $new->PersNodeID = $PersNodeID;

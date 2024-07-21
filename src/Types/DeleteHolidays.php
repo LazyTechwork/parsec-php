@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class DeleteHolidays implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?ArrayOfHoliday $holidays = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?ArrayOfHoliday $holidays)
+    public function __construct(Guid $sessionID, ?ArrayOfHoliday $holidays)
     {
         $this->sessionID = $sessionID;
         $this->holidays = $holidays;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

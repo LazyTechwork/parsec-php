@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class DeleteAdvancedQRQGroup implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private int $groupID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, int $groupID)
+    public function __construct(Guid $sessionID, int $groupID)
     {
         $this->sessionID = $sessionID;
         $this->groupID = $groupID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

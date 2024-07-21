@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CloseAllActiveVisitorRequests implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $visitorID;
+    private Guid $visitorID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $visitorID)
+    public function __construct(Guid $sessionID, Guid $visitorID)
     {
         $this->sessionID = $sessionID;
         $this->visitorID = $visitorID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class CloseAllActiveVisitorRequests implements RequestInterface
         return $new;
     }
 
-    public function getVisitorID(): string
+    public function getVisitorID(): Guid
     {
         return $this->visitorID;
     }
 
-    public function withVisitorID(string $visitorID): static
+    public function withVisitorID(Guid $visitorID): static
     {
         $new = clone $this;
         $new->visitorID = $visitorID;

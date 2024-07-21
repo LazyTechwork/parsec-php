@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class CreateAccessSchedule implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?AccessSchedule $schedule = null;
 
@@ -15,19 +15,19 @@ class CreateAccessSchedule implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?AccessSchedule $schedule, ?ArrayOfScheduleDay $days)
+    public function __construct(Guid $sessionID, ?AccessSchedule $schedule, ?ArrayOfScheduleDay $days)
     {
         $this->sessionID = $sessionID;
         $this->schedule = $schedule;
         $this->days = $days;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

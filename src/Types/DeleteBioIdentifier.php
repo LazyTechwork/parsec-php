@@ -6,25 +6,25 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class DeleteBioIdentifier implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $identifierID;
+    private Guid $identifierID;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $identifierID)
+    public function __construct(Guid $sessionID, Guid $identifierID)
     {
         $this->sessionID = $sessionID;
         $this->identifierID = $identifierID;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -32,12 +32,12 @@ class DeleteBioIdentifier implements RequestInterface
         return $new;
     }
 
-    public function getIdentifierID(): string
+    public function getIdentifierID(): Guid
     {
         return $this->identifierID;
     }
 
-    public function withIdentifierID(string $identifierID): static
+    public function withIdentifierID(Guid $identifierID): static
     {
         $new = clone $this;
         $new->identifierID = $identifierID;

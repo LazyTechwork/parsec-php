@@ -6,7 +6,7 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class GetCardCodeFromUID implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
     private ?string $UID = null;
 
@@ -15,19 +15,19 @@ class GetCardCodeFromUID implements RequestInterface
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, ?string $UID, bool $reverseByteOrder)
+    public function __construct(Guid $sessionID, ?string $UID, bool $reverseByteOrder)
     {
         $this->sessionID = $sessionID;
         $this->UID = $UID;
         $this->reverseByteOrder = $reverseByteOrder;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;

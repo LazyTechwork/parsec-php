@@ -4,18 +4,18 @@ namespace LazyTechwork\Parsec\Types;
 
 class PassageRole extends BaseObject
 {
-    private string $ID;
+    private Guid $ID;
 
     private ?string $NAME = null;
 
     private ?string $DESCRIPTION = null;
 
-    public function getID(): string
+    public function getID(): Guid
     {
         return $this->ID;
     }
 
-    public function withID(string $ID): static
+    public function withID(Guid $ID): static
     {
         $new = clone $this;
         $new->ID = $ID;

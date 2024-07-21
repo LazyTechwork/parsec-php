@@ -6,28 +6,28 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SetInheritedAccessGroups implements RequestInterface
 {
-    private string $sessionID;
+    private Guid $sessionID;
 
-    private string $accessGroupID;
+    private Guid $accessGroupID;
 
     private ?ArrayOfGuid $inheritedGroups = null;
 
     /**
      * Constructor.
      */
-    public function __construct(string $sessionID, string $accessGroupID, ?ArrayOfGuid $inheritedGroups)
+    public function __construct(Guid $sessionID, Guid $accessGroupID, ?ArrayOfGuid $inheritedGroups)
     {
         $this->sessionID = $sessionID;
         $this->accessGroupID = $accessGroupID;
         $this->inheritedGroups = $inheritedGroups;
     }
 
-    public function getSessionID(): string
+    public function getSessionID(): Guid
     {
         return $this->sessionID;
     }
 
-    public function withSessionID(string $sessionID): static
+    public function withSessionID(Guid $sessionID): static
     {
         $new = clone $this;
         $new->sessionID = $sessionID;
@@ -35,12 +35,12 @@ class SetInheritedAccessGroups implements RequestInterface
         return $new;
     }
 
-    public function getAccessGroupID(): string
+    public function getAccessGroupID(): Guid
     {
         return $this->accessGroupID;
     }
 
-    public function withAccessGroupID(string $accessGroupID): static
+    public function withAccessGroupID(Guid $accessGroupID): static
     {
         $new = clone $this;
         $new->accessGroupID = $accessGroupID;
