@@ -2,6 +2,7 @@
 
 namespace LazyTechwork\Parsec\Types;
 
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 final class Guid implements \Stringable
@@ -26,5 +27,10 @@ final class Guid implements \Stringable
     public static function fromString(string $guid): self
     {
         return new self($guid);
+    }
+
+    public static function ZERO(): self
+    {
+        return new self(Uuid::NIL);
     }
 }
