@@ -7,8 +7,14 @@ use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
 use Phpro\SoapClient\Soap\EngineOptions;
+use Soap\Encoding\Encoder\Context;
+use Soap\Encoding\Encoder\SimpleType\ScalarTypeEncoder;
+use Soap\Encoding\Encoder\XmlEncoder;
 use Soap\Encoding\EncoderRegistry;
+use Soap\WsdlReader\Model\Definitions\BindingUse;
+use Soap\WsdlReader\Model\Definitions\SoapVersion;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use VeeWee\Reflecta\Iso\Iso;
 
 class ParsecClientFactory
 {
@@ -24,7 +30,25 @@ class ParsecClientFactory
                             'guid',
                             new GuidEncoder()
                         )
+                        ->addSimpleTypeConverter(
+                            'http://www.w3.org/2001/XMLSchema',
+                            'anyType',
+                            new class() implements XmlEncoder {
+                                public function iso(Context $context): Iso
+                                {
+                                    return (new ScalarTypeEncoder())->iso(new Context(
+                                        $context->type,
+                                        $context->metadata,
+                                        $context->registry,
+                                        $context->namespaces,
+                                        BindingUse::ENCODED
+                                    ));
+                                }
+                            }
+                        )
                 )
+                ->withPreferredSoapVersion(SoapVersion::SOAP_12)
+
             // If you want to enable WSDL caching:
             // ->withCache()
             // If you want to use Alternate HTTP settings:
