@@ -2,8 +2,8 @@
 
 namespace LazyTechwork\Parsec;
 
-use LazyTechwork\Parsec\Encoders\ContextEnhancer;
 use LazyTechwork\Parsec\Encoders\GuidEncoder;
+use LazyTechwork\Parsec\Encoders\SimpleContextEnhancer;
 use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
@@ -27,7 +27,7 @@ class ParsecClientFactory
                             'guid',
                             new GuidEncoder()
                         )
-                        ->addSimpleTypeConverter(Xmlns::xsd()->value(), 'anyType', new ContextEnhancer())
+                        ->addSimpleTypeConverter(Xmlns::xsd()->value(), 'anyType', new SimpleContextEnhancer())
                 )
                 ->withPreferredSoapVersion(SoapVersion::SOAP_12)
 

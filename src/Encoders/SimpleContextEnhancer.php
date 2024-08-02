@@ -9,7 +9,7 @@ use Soap\Encoding\Encoder\XmlEncoder;
 use Soap\WsdlReader\Model\Definitions\BindingUse;
 use VeeWee\Reflecta\Iso\Iso;
 
-class ContextEnhancer implements ElementContextEnhancer, XmlEncoder
+class SimpleContextEnhancer implements ElementContextEnhancer, XmlEncoder
 {
     public function iso(Context $context): Iso
     {
