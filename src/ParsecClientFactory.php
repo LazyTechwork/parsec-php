@@ -8,6 +8,7 @@ use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
 use Phpro\SoapClient\Soap\EngineOptions;
 use Soap\Encoding\Encoder\Context;
+use Soap\Encoding\Encoder\Feature\ElementContextEnhancer;
 use Soap\Encoding\Encoder\SimpleType\ScalarTypeEncoder;
 use Soap\Encoding\Encoder\XmlEncoder;
 use Soap\Encoding\EncoderRegistry;
@@ -33,16 +34,19 @@ class ParsecClientFactory
                         ->addSimpleTypeConverter(
                             'http://www.w3.org/2001/XMLSchema',
                             'anyType',
-                            new class() implements XmlEncoder {
+                            new class() implements ElementContextEnhancer, XmlEncoder {
                                 public function iso(Context $context): Iso
                                 {
-                                    return (new ScalarTypeEncoder())->iso(new Context(
-                                        $context->type,
-                                        $context->metadata,
-                                        $context->registry,
-                                        $context->namespaces,
-                                        BindingUse::ENCODED
-                                    ));
+                                    return (new ScalarTypeEncoder())->iso($context);
+                                }
+
+                                /**
+                                 * This method allows to change the context on the wrapping elementEncoder.
+                                 * By forcing the bindingUse to `ENCODED`, we can make sure the xsi:type attribute is added.
+                                 */
+                                public function enhanceElementContext(Context $context): Context
+                                {
+                                    return $context->withBindingUse(BindingUse::ENCODED);
                                 }
                             }
                         )
