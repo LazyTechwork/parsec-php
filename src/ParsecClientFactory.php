@@ -2,8 +2,10 @@
 
 namespace LazyTechwork\Parsec;
 
+use LazyTechwork\Parsec\Encoders\ComplexContextEnhancer;
 use LazyTechwork\Parsec\Encoders\GuidEncoder;
 use LazyTechwork\Parsec\Encoders\SimpleContextEnhancer;
+use LazyTechwork\Parsec\Types\BaseIdentifier;
 use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
@@ -28,6 +30,11 @@ class ParsecClientFactory
                             new GuidEncoder()
                         )
                         ->addSimpleTypeConverter(Xmlns::xsd()->value(), 'anyType', new SimpleContextEnhancer())
+                        ->addComplexTypeConverter(
+                            'http://parsec.ru/Parsec3IntergationService',
+                            'BaseIdentifier',
+                            new ComplexContextEnhancer(BaseIdentifier::class)
+                        )
                 )
                 ->withPreferredSoapVersion(SoapVersion::SOAP_12)
 
