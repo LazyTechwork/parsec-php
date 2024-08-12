@@ -13,15 +13,18 @@ use Soap\Encoding\Encoder\XmlEncoder;
 use Soap\Encoding\Xml\Node\Element;
 use Soap\Engine\Metadata\Model\XsdType;
 use Soap\WsdlReader\Model\Definitions\BindingUse;
+use Soap\Xml\Xmlns;
 use VeeWee\Reflecta\Iso\Iso;
 
 class SimpleContextEnhancer implements ElementContextEnhancer, XmlEncoder
 {
     public function iso(Context $context): Iso
     {
+        $context = $context->withBindingUse(BindingUse::ENCODED);
+
         return new Iso(
-            fn (object|array $value): string => $this->to($context, $value),
-            fn (string|Element $value): object => $this->from($context, $value)
+            fn (mixed $value): string => $this->to($context, $value),
+            fn (Element|string $value): object => $this->from($context, $value)
         );
     }
 
@@ -34,26 +37,50 @@ class SimpleContextEnhancer implements ElementContextEnhancer, XmlEncoder
         return $context->withBindingUse(BindingUse::ENCODED);
     }
 
+    public function resolveXsiType(Context $context, mixed $value): Context
+    {
+        $xsd = Xmlns::xsd()->value();
+        $resolvedType = null;
+
+        if (is_a($value, DateTime::class)) {
+            $resolvedType = $context->type->copy('dateTime')
+                ->withXmlTypeName('dateTime')
+                ->withXmlNamespaceName($context->namespaces->lookupNameFromNamespace($xsd)->unwrap())
+                ->withXmlNamespace($xsd);
+        }
+
+        if (is_a($value, Date::class)) {
+            $resolvedType = $context->type->copy('date')
+                ->withXmlTypeName('date')
+                ->withXmlNamespaceName($context->namespaces->lookupNameFromNamespace($xsd)->unwrap())
+                ->withXmlNamespace($xsd);
+        }
+
+        if ($resolvedType !== null) {
+            return $context->withType($resolvedType);
+        }
+
+        return $context;
+    }
+
     private function to(Context $context, mixed $value): string
     {
         if (is_a($value, DateTime::class)) {
-            return (new DateTimeTypeEncoder(DateTimeTypeEncoder::DATE_FORMAT_TIME_ZONED))->iso($context
-                ->withBindingUse(BindingUse::ENCODED)
-                ->withType($context->type->copy('dateTime')))
+            return (new DateTimeTypeEncoder(DateTimeTypeEncoder::DATE_FORMAT_TIME_ZONED))
+                ->iso($this->enhanceElementContext($context))
                 ->to($value->dateTime);
         }
 
         if (is_a($value, Date::class)) {
-            return (new DateTypeEncoder(DateTypeEncoder::DATE_FORMAT_LOCAL))->iso($context
-                ->withBindingUse(BindingUse::ENCODED)
-                ->withType($context->type->copy('date')))
+            return (new DateTypeEncoder(DateTypeEncoder::DATE_FORMAT_LOCAL))
+                ->iso($this->enhanceElementContext($context))
                 ->to($value->date);
         }
 
         return (new ScalarTypeEncoder())->iso($context)->to($value);
     }
 
-    private function from(Context $context, string|Element $value): object
+    private function from(Context $context, Element|string $value): object
     {
         if ($value instanceof Element) {
             return $context->registry
