@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56ad93c6605127762a1b96be51465f5c",
+    "content-hash": "ed850f9b719d4da821f801f3c72162a9",
     "packages": [
         {
             "name": "azjezz/psl",
@@ -1306,16 +1306,16 @@
         },
         {
             "name": "php-soap/encoding",
-            "version": "0.9.1",
+            "version": "dev-xsi-type-resolver",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-soap/encoding.git",
-                "reference": "abbf3526db0acd00a6366f556007bed8878a81b7"
+                "url": "https://github.com/LazyTechwork/php-soap-encoding.git",
+                "reference": "c42f71687d6d54832e6b460771feb0e983feffb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-soap/encoding/zipball/abbf3526db0acd00a6366f556007bed8878a81b7",
-                "reference": "abbf3526db0acd00a6366f556007bed8878a81b7",
+                "url": "https://api.github.com/repos/LazyTechwork/php-soap-encoding/zipball/c42f71687d6d54832e6b460771feb0e983feffb9",
+                "reference": "c42f71687d6d54832e6b460771feb0e983feffb9",
                 "shasum": ""
             },
             "require": {
@@ -1343,7 +1343,11 @@
                     "Soap\\Encoding\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Soap\\Encoding\\Test\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1355,16 +1359,15 @@
             ],
             "description": "SOAP encoding and decoding package",
             "support": {
-                "issues": "https://github.com/php-soap/encoding/issues",
-                "source": "https://github.com/php-soap/encoding/tree/0.9.1"
+                "source": "https://github.com/LazyTechwork/php-soap-encoding/tree/xsi-type-resolver"
             },
             "funding": [
                 {
-                    "url": "https://opencollective.com/php-soap",
-                    "type": "open_collective"
+                    "type": "open_collective",
+                    "url": "https://opencollective.com/php-soap"
                 }
             ],
-            "time": "2024-08-01T11:49:57+00:00"
+            "time": "2024-08-12T14:10:11+00:00"
         },
         {
             "name": "php-soap/engine",
@@ -5614,9 +5617,18 @@
             "time": "2024-05-31T14:57:53+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "php-soap/encoding",
+            "version": "dev-xsi-type-resolver",
+            "alias": "0.4",
+            "alias_normalized": "0.4.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "php-soap/encoding": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

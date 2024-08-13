@@ -4,6 +4,12 @@
   "description": "Client for integration with ParsecNET 3",
   "type": "library",
   "license": "MIT",
+  "repositories": [
+    {
+      "type": "github",
+      "url": "https://github.com/LazyTechwork/php-soap-encoding"
+    }
+  ],
   "require": {
     "php": ">=8.1",
     "ext-xml": "*",
@@ -13,7 +19,8 @@
     "php-soap/ext-soap-engine": "^1.6",
     "guzzlehttp/psr7": "^2.7",
     "symfony/cache": "^7.2",
-    "ramsey/uuid": "^4.7.6"
+    "ramsey/uuid": "^4.7.6",
+    "php-soap/encoding": "dev-xsi-type-resolver as 0.4"
   },
   "scripts": {
     "generate": [
