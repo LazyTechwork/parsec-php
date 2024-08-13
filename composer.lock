@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed850f9b719d4da821f801f3c72162a9",
+    "content-hash": "9c12a0f81f967907cdc5f403591821d5",
     "packages": [
         {
             "name": "azjezz/psl",
@@ -1361,12 +1361,6 @@
             "support": {
                 "source": "https://github.com/LazyTechwork/php-soap-encoding/tree/xsi-type-resolver"
             },
-            "funding": [
-                {
-                    "type": "open_collective",
-                    "url": "https://opencollective.com/php-soap"
-                }
-            ],
             "time": "2024-08-12T14:10:11+00:00"
         },
         {
@@ -5621,8 +5615,8 @@
         {
             "package": "php-soap/encoding",
             "version": "dev-xsi-type-resolver",
-            "alias": "0.4",
-            "alias_normalized": "0.4.0.0"
+            "alias": "0.10",
+            "alias_normalized": "0.10.0.0"
         }
     ],
     "minimum-stability": "dev",

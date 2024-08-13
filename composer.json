@@ -20,7 +20,7 @@
     "guzzlehttp/psr7": "^2.7",
     "symfony/cache": "^7.2",
     "ramsey/uuid": "^4.7.6",
-    "php-soap/encoding": "dev-xsi-type-resolver as 0.4"
+    "php-soap/encoding": "dev-xsi-type-resolver as 0.10"
   },
   "scripts": {
     "generate": [
