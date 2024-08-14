@@ -8,7 +8,6 @@ use LazyTechwork\Parsec\Encoders\SimpleContextEnhancer;
 use LazyTechwork\Parsec\Types\BaseIdentifier;
 use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
-use Phpro\SoapClient\Soap\DefaultEngineFactory;
 use Phpro\SoapClient\Soap\EngineOptions;
 use Soap\Encoding\EncoderRegistry;
 use Soap\WsdlReader\Model\Definitions\SoapVersion;
@@ -19,7 +18,7 @@ class ParsecClientFactory
 {
     public static function factory(string $wsdl): ParsecClient
     {
-        $engine = DefaultEngineFactory::create(
+        $engine = ParsecEngineFactory::create(
             EngineOptions::defaults($wsdl)
                 ->withEncoderRegistry(
                     EncoderRegistry::default()
